@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Non-stop 4K fireplace</title>
+    <style>
+      * { margin: 0; padding: 0; }
+      html, body, #player {
+        height: 100%
+      }
+    </style>
+  </head>
+  <body>
+    <video class="youtube-video" data-yt="https://youtube.com/watch?v=AWKzr6n0ea0"></video>
+    <script src="yt5.js"></script>
+    <script>
+      new YouTubeToHtml5({
+        selector: '.youtube-video',
+        attribute: 'data-yt'
+      });
+    </script>
+  </body>
+</html>
