@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <!--
+    I have done this by copy-pasting a lot of stuff from other sources, it's only fair to give back credit, go have a look:
+
+    YouTube API: https://developers.google.com/youtube/iframe_api_reference#Playback_controls
+    A brilliant YoutTube to HTML5 library: https://github.com/thelevicole/youtube-to-html5-loader/
+    This article about pixelisation: https://medium.com/@nathanwillson/conways-webcam-of-life-html5-canvas-webcam-and-video-effects-81c96655bb14
+    RequestInterval from Chris Coyer: https://css-tricks.com/snippets/javascript/replacements-setinterval-using-requestanimationframe/
+    MDN about fullscreen API: https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API
+    MDN about about manipulating video with canvas: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Manipulating_video_using_canvas
+
+    Play button made by Freepik from www.flaticon.com
+  -->
+ <head>
+    <title>Non-stop 60 FPS Pixelated fireplace</title>
+    <style>
+      * { margin: 0; padding: 0; }
+      html, body, #player {
+        height: 100%;
+        overflow: hidden;
+        background: #000;
+      }
+      canvas {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+      }
+      #player,
+      #ytPlayer {
+        position: absolute;
+        z-index: 0;
+        top: 0;
+        left: 0;
+        opacity: 0;
+      }
+      button {
+        appearance: none;
+        text-indent: -9999em;
+        border: 0;
+        background: url('play.png') 50% no-repeat;
+        background-size: 50%;
+        width: 256px;
+        height: 256px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+  </head>
+  <body>
+    <canvas></canvas>
+    <video id="player" data-yt="https://youtube.com/watch?v=AWKzr6n0ea0" autoplay loop controls preload></video>
+    <div id="ytPlayer"></div>
+    <button>Play</button>
+    <script src="yt5.js"></script>
+    <script>
+      new YouTubeToHtml5({
+        selector: '#player',
+        attribute: 'data-yt',
+        autoload: true
+      });
+    </script>
+    <script>
+      const tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      let ytPlayer;
+      function onYouTubeIframeAPIReady() {
+        ytPlayer = new YT.Player('ytPlayer', {
+          height: '100%',
+          width: '100%',
+          videoId: 'AWKzr6n0ea0',
+          events: {
+            'onStateChange': onPlayerStateChange,
+          }
+        });
+      }
+
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.ENDED) {
+          event.target.playVideo();
+        }
+      }
+
+      const pixelate = (image, canvas, context) => {
+        const pixelSize = 8;
+        const frameRate = 100;
+        const scale = 1 / pixelSize;
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const wScaled = canvas.width * scale;
+        const hScaled = canvas.height * scale;
+
+        context.drawImage(image, 0, 0, wScaled, hScaled);
+        context.mozImageSmoothingEnabled = false;
+        context.imageSmoothingEnabled = false;
+        context.drawImage(canvas, 0, 0, wScaled, hScaled, 0, 0, canvas.width, canvas.height);
+      }
+
+      const toggleFullScreen = () => {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+        } else if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+
+      var requestInterval = function (fn, delay) {
+        var requestAnimFrame = (function () {
+          return window.requestAnimationFrame || function (callback, element) {
+            window.setTimeout(callback, 1000 / 60);
+          };
+        })(),
+        start = new Date().getTime(),
+        handle = {};
+        function loop() {
+          handle.value = requestAnimFrame(loop);
+          var current = new Date().getTime(),
+          delta = current - start;
+          if (delta >= delay) {
+            fn.call();
+            start = new Date().getTime();
+          }
+        }
+        handle.value = requestAnimFrame(loop);
+        return handle;
+      };
+
+      const init = () => {
+        const video = document.querySelector('video');
+        const canvas = document.querySelector('canvas');
+        const context = canvas.getContext('2d');
+
+        video.addEventListener('play', () => {
+          requestInterval(pixelate.bind(this, video, canvas, context), 60)
+        });
+
+        video.addEventListener('canplay', () => {
+          pixelate.bind(this, video, canvas, context)
+        });
+
+        document.body.addEventListener('click', () => {
+
+          if (video.paused) {
+            video.play();
+            ytPlayer.playVideo();
+          } else {
+            video.pause();
+            ytPlayer.pauseVideo();
+          }
+
+        })
+
+        document.body.addEventListener('dblclick', () => {
+
+          toggleFullScreen()
+
+        })
+      }
+
+
+      document.addEventListener('DOMContentLoaded', init);
+
+      </script>
+  </body>
+</html>
