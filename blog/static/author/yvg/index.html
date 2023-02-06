@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>yvg - Yves Van Goethem&#x27;s blog</title>
+    <link rel="stylesheet" href="./../../assets/built/screen.css?v=4357afa43b">
+
+
+    <style>
+        :root {
+            --background-color: #faf6e9
+        }
+    </style>
+
+    <script>
+        /* The script for calculating the color contrast was taken from
+        https://gomakethings.com/dynamically-changing-the-text-color-based-on-background-color-contrast-with-vanilla-js/ */
+        var accentColor = getComputedStyle(document.documentElement).getPropertyValue('--background-color');
+        accentColor = accentColor.trim().slice(1);
+        var r = parseInt(accentColor.substr(0, 2), 16);
+        var g = parseInt(accentColor.substr(2, 2), 16);
+        var b = parseInt(accentColor.substr(4, 2), 16);
+        var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+        var textColor = (yiq >= 128) ? 'dark' : 'light';
+
+        document.documentElement.className = `has-${textColor}-text`;
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet">
+
+    <link rel="canonical" href="https://yves.vg/blog/author/yvg/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <meta property="og:site_name" content="Yves Van Goethem&#x27;s blog" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content="yvg - Yves Van Goethem&#x27;s blog" />
+    <meta property="og:url" content="https://yves.vg/blog/author/yvg/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="yvg - Yves Van Goethem&#x27;s blog" />
+    <meta name="twitter:url" content="https://yves.vg/blog/author/yvg/" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "sameAs": [],
+    "name": "yvg",
+    "url": "https://yves.vg/blog/author/yvg/",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://yves.vg/blog/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.33" />
+    <link rel="alternate" type="application/rss+xml" title="Yves Van Goethem&#x27;s blog" href="https://yves.vg/blog/rss/" />
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="37cbe9546f9f010353f15b29f1" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://yves.vg/blog/" crossorigin="anonymous"></script>
+    <link href="https://yves.vg/blog/webmentions/receive/" rel="webmention" />
+    <script defer src="./../../public/cards.min.js?v=4357afa43b"></script><style>:root {--ghost-accent-color: #FF1A75;}</style>
+    <link rel="stylesheet" type="text/css" href="./../../public/cards.min.css?v=4357afa43b">
+</head>
+
+<body class="author-template author-yvg is-font-serif">
+<div class="gh-site">
+
+        
+<header id="gh-head" class="gh-head gh-outer is-head-middle-logo">
+    <div class="gh-head-inner gh-inner">
+        <div class="gh-head-brand">
+            <div class="gh-head-brand-wrapper">
+                <a class="gh-head-logo" href="https://yves.vg/blog">
+                        Yves Van Goethem&#x27;s blog
+                </a>
+            </div>
+            <button class="gh-search gh-icon-btn" data-ghost-search><svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <path d="M17.5 17.5L12.5 12.5L17.5 17.5ZM14.1667 8.33333C14.1667 9.09938 14.0158 9.85792 13.7226 10.5657C13.4295 11.2734 12.9998 11.9164 12.4581 12.4581C11.9164 12.9998 11.2734 13.4295 10.5657 13.7226C9.85792 14.0158 9.09938 14.1667 8.33333 14.1667C7.56729 14.1667 6.80875 14.0158 6.10101 13.7226C5.39328 13.4295 4.75022 12.9998 4.20854 12.4581C3.66687 11.9164 3.23719 11.2734 2.94404 10.5657C2.65088 9.85792 2.5 9.09938 2.5 8.33333C2.5 6.78624 3.11458 5.30251 4.20854 4.20854C5.30251 3.11458 6.78624 2.5 8.33333 2.5C9.88043 2.5 11.3642 3.11458 12.4581 4.20854C13.5521 5.30251 14.1667 6.78624 14.1667 8.33333Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
+</button>
+            <button class="gh-burger"></button>
+        </div>
+
+        <nav class="gh-head-menu">
+            <ul class="nav">
+    <li class="nav-about"><a href="https://yves.vg">About</a></li>
+</ul>
+
+        </nav>
+
+        <div class="gh-head-actions">
+                    <button class="gh-search gh-icon-btn" data-ghost-search><svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <path d="M17.5 17.5L12.5 12.5L17.5 17.5ZM14.1667 8.33333C14.1667 9.09938 14.0158 9.85792 13.7226 10.5657C13.4295 11.2734 12.9998 11.9164 12.4581 12.4581C11.9164 12.9998 11.2734 13.4295 10.5657 13.7226C9.85792 14.0158 9.09938 14.1667 8.33333 14.1667C7.56729 14.1667 6.80875 14.0158 6.10101 13.7226C5.39328 13.4295 4.75022 12.9998 4.20854 12.4581C3.66687 11.9164 3.23719 11.2734 2.94404 10.5657C2.65088 9.85792 2.5 9.09938 2.5 8.33333C2.5 6.78624 3.11458 5.30251 4.20854 4.20854C5.30251 3.11458 6.78624 2.5 8.33333 2.5C9.88043 2.5 11.3642 3.11458 12.4581 4.20854C13.5521 5.30251 14.1667 6.78624 14.1667 8.33333Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
+</button>
+        </div>
+    </div>
+</header>
+
+    
+<main class="gh-main gh-outer">
+    <div class="gh-inner">
+            <section class="gh-archive gh-outer">
+    <div class="gh-archive-inner gh-inner">
+        <header class="gh-archive-header">
+                <figure class="gh-archive-image">
+                    <img
+                        srcset="https://www.gravatar.com/avatar/9bf751a02c0cac26d64d25523e54960e?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 300w,
+                                https://www.gravatar.com/avatar/9bf751a02c0cac26d64d25523e54960e?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 720w,
+                                https://www.gravatar.com/avatar/9bf751a02c0cac26d64d25523e54960e?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 960w,
+                                https://www.gravatar.com/avatar/9bf751a02c0cac26d64d25523e54960e?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 1200w,
+                                https://www.gravatar.com/avatar/9bf751a02c0cac26d64d25523e54960e?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp 2000w"
+                        sizes="(max-width: 1200px) 100vw, 1200px"
+                        src="https://www.gravatar.com/avatar/9bf751a02c0cac26d64d25523e54960e?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp"
+                        alt="yvg"
+                    >
+                </figure>
+            <h1 class="gh-archive-title">yvg</h1>
+            <div class="gh-archive-meta">
+                <div class="gh-archive-social">
+                </div>
+            </div>
+        </header>
+    </div>
+</section>        
+<div class="gh-list grid gh-outer" data-column="4">
+    <div class="gh-list-inner gh-inner">
+
+
+
+            <div class="gh-list-feed gh-feed">
+            </div>
+
+    </div>
+</div>
+    </div>
+</main>
+
+    
+<footer class="gh-foot gh-outer">
+    <div class="gh-foot-inner gh-inner">
+        <nav class="gh-foot-menu">
+            <ul class="nav">
+    <li class="nav-mastodon"><a href="https://indieweb.social/web/@yvg">Mastodon</a></li>
+    <li class="nav-linkedin"><a href="https://www.linkedin.com/in/yvg/">LinkedIn</a></li>
+</ul>
+
+        </nav>
+
+        <div class="gh-copyright">
+                Yves Van Goethem&#x27;s blog &copy; 2023. Powered by <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
+        </div>
+    </div>
+</footer>
+</div>
+
+
+<script src="./../../assets/built/main.min.js?v=4357afa43b"></script>
+
+
+
+</body>
+
+</html>
