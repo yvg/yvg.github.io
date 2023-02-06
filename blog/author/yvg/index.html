@@ -63,8 +63,25 @@
     
     <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="37cbe9546f9f010353f15b29f1" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://yves.vg/blog/" crossorigin="anonymous"></script>
     <link href="https://yves.vg/blog/webmentions/receive/" rel="webmention" />
-    <script defer src="./../../public/cards.min.js?v=4357afa43b"></script><style>:root {--ghost-accent-color: #FF1A75;}</style>
+    <script defer src="./../../public/cards.min.js?v=4357afa43b"></script>
     <link rel="stylesheet" type="text/css" href="./../../public/cards.min.css?v=4357afa43b">
+    <style>
+    :root {
+   		--content-font-size: 21px;
+    }
+    .gh-content h1 {
+	  font-size: 4.8rem;
+    }
+    .gh-content code {
+	 	font-size: calc(var(--content-font-size, 1.8rem)*var(--font-multiplier, 1)*0.825);
+	}
+    @media (max-width: 767px) {
+        .gh-content code {
+			font-size: 1.4rem;
+        }
+    }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism-tomorrow.min.css" integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg==" crossorigin="anonymous" referrerpolicy="no-referrer" /><style>:root {--ghost-accent-color: #FF1A75;}</style>
 </head>
 
 <body class="author-template author-yvg is-font-serif">
@@ -134,7 +151,17 @@
 
 
             <div class="gh-list-feed gh-feed">
-            </div>
+                    <article class="gh-list-item post no-image">
+    <a class="gh-list-item-inner" href="./../../ghost-post/">
+        <div class="gh-list-item-content">
+
+            <h3 class="gh-list-item-title">Ghost: Static Site Generation</h3>
+
+
+
+        </div>
+    </a>
+</article>            </div>
 
     </div>
 </div>
@@ -162,7 +189,8 @@
 
 <script src="./../../assets/built/main.min.js?v=4357afa43b"></script>
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-core.min.js" integrity="sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-fTl/qcO1VgvKtOMApX2PdZzkziyr2stM65GYPLGuYMnuMm1z2JLJG6XVU7C/mR+E7xBUqCivykuhlzfqxXBXbg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </body>
 
