@@ -19,7 +19,7 @@ jobs:
         run: npm install
 
       - name: Convert Markdown files to HTML
-        run: node blog2/src/bin/md-to-html.js
+        run: node blog/src/bin/md-to-html.js
 
       - name: Commit and push changes
         run: |
