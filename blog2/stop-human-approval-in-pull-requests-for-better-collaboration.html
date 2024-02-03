@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Human Approval in Pull Requests: A case for better collaboration</title>
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+
+  <body>
+    <nav>
+      Yves Van Goethem's blog
+    </nav>
+    <main>
+      <p>Feb. 2, 2024</p>
+<h1>Stop Human Approval in Pull Requests: A case for better collaboration</h1>
+<p>Your immediate thought might be: “This is stupid! Human approval in PRs is a fundamental process in software development, it ensures quality, detects issues, is a great way to collaborate, defines governance, helps to learn from each other… aaand everybody does it. It works well for me, I have countless examples.”</p>
+<p>Everybody does it. Some famous people, technical influencers, big corporations,… are big proponents of it. And everybody, you, me, and our colleagues who have used PRs are biased by ingrained habits.
+Some claim that it&#39;s the only way, that PRs should be long-lived and that each keystroke must be reviewed for absolute technical perfection.</p>
+<p>We move from organisation to organisation, from repo to repo, and we repeat the same process over and over again. We don&#39;t question it, we just do it.
+When it&#39;s not present in small projects, we add it. When an organisation works without it, we introduce it.</p>
+<p>However, we rarely question this choice.</p>
+<p>So… let&#39;s question it, let&#39;s explore some of the consequences that emanate from it, and some alternatives we can apply to yield better results.</p>
+<h2>Delays</h2>
+<p>The evident consequence of human approval is delay. While numerous delays can be attributed to it, we can summarise it to one: <strong>delayed value delivery to end customers.</strong> In turn, this results in delayed feedback to enhance our products.</p>
+<p>Many of the same organisations pride themselves in embracing agility and following lean principles. However, if you are familiar with the <strong>8 Wastes of Lean</strong>, waiting for approval is a waste, a waste of time, and a major (if not the biggest) reason for slow delivery, it&#39;s also a waterfall principle right in the middle of the process.</p>
+<p>The immediate consequence of this is visible in metrics. For instance, lead times and delivery frequency visibly improve when human approval is not part of the process.</p>
+<h2>Quality</h2>
+<p>Thoroughly reviewing a PR, fully understanding the acceptance criteria, verifying the architecture, the layers, reading all files (not just the diff), understanding how it all belongs together, thinking about each variable name, validating interfaces, reading the tests, running the code,… is a lot of work.</p>
+<p>And let&#39;s be frank, most people don&#39;t engage in such a comprehensive review. Nobody has the capacity, energy or time for this.
+Instead, it&#39;s very common to skim through the PR, look for a few things that one would do differently, and comment on those.</p>
+<p>A more effective way to ensure quality is for people to collaborate, to align beforehand, to teach each other, and to continuously agree on software principles, architectural concepts and design patterns. To write them down and to point to them in every discussion.</p>
+<p>Bug detection, static analysis, pattern enforcement, test coverage, linting,… should be automated as much as possible.</p>
+<h2>Interpersonal Friction</h2>
+<p>It&#39;s not uncommon to see heated discussions in PRs, with people getting upset, angry, and frustrated. In the worst cases, people have to be reminded to be respectful and professional by their managers, or worse.</p>
+<p>Still, well-formulated and well-intentioned comments can still be misinterpreted.</p>
+<p>By removing human approval, we must shift how we interact with one another. A highly successful way to do so is to <strong>pair</strong>, to <strong>mob</strong>, or at least to <strong>pair code-review</strong>. It&#39;s much easier to have a conversation about code, share ideas, and learn from each other synchronously with a common contextual understanding, than to try to convey the same context, information and sentiment asynchronously in comments.</p>
+<h2>Ownership</h2>
+<p>When we introduce human approval, we implicitly convey that we don&#39;t trust each other. That others must check our work.</p>
+<p>This tends to diminish accountability. Some people are less likely to feel responsible for the work they do.</p>
+<p>A healthier approach is to foster individual responsibility for one&#39;s work. To let authors decide when and when not to ask for help and to be fully accountable for the outcome. Not by blaming them when things go wrong, but by helping them to learn from their mistakes.</p>
+<p>It&#39;s a fantastic way to ensure continuous growth, eliminate the fear of merging, and become better at what we do, truly collaboratively.</p>
+<h2>Context Switching</h2>
+<p>This is an obvious one which leads to many interruptions and fatigue.
+Human approvals tend to decuple context switching as everybody is asking each other to review pieces of work asynchronously and in parallel.
+In the best case, people batch review and dedicate time in their day to do so.</p>
+<p>A more efficient way to work is to focus on a single task at a time, from definition to completion, and only then move to a new task. It is a well-known principle of lean methodologies and one of the most impactful ways to improve our workflow.</p>
+<h2>Conclusion / <code>tl;dr</code></h2>
+<p>Human approval in PRs delays delivery, does not ensure quality, creates friction, diminishes ownership, and leads to enormous context switching.</p>
+<p>Automation and a culture of real-time collaboration, in which everyone assumes best intentions, can replace the need for human approval in its entirety.</p>
+<p>The best way to convince oneself is to try it out for a few months and measure the results.</p>
+<h2>Further inspiration</h2>
+<ul>
+<li><a href="https://theleanway.net/The-8-Wastes-of-Lean">The 8 Wastes of Lean</a></li>
+<li><a href="https://trunkbaseddevelopment.com/#one-line-summary">Trunk Based Development</a></li>
+<li><a href="https://agilemanifesto.org/">Agile Manifesto</a></li>
+</ul>
+
+    </main>
+  </body>
+
+  <footer>
+    <p>
+      <a href="/" title="About Yves Van Goethem">About</a>
+      <a href="https://indieweb.social/web/@yvg" title="Yves Van Goethem on Mastodon">Mastodon</a>
+      <a href="https://www.linkedin.com/in/yvg/" title="Yves Van Goethem on LinkedIn">LinkedIn</a>
+    </p>
+    <p>Yves Van Goethem, all rights reserved</p>
+  </footer>
+</html>
