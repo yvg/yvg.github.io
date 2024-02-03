@@ -23,22 +23,14 @@ const marked = new Marked().use(
   })
 )
 
-function doesHtmlFileNotExist(fileName) {
-  return !readdirSync(outputFolder).includes(fileName);
-}
-
 function writeMdFilesToHtml() {
   mdFiles.forEach((file) => {
     const mdContent = readFileSync(`${inputFolder}/${file}`, 'utf8');
     const htmlContent = marked.parse(mdContent);
     const outputFileName = file.replace('.md', '.html');
 
-    if (doesHtmlFileNotExist(outputFileName)) {
-      console.log(`Converting ${file} to HTML…`);
-      writeFileSync(`${outputFolder}/${outputFileName}`, htmlContent);
-    } else {
-      console.log(`Skipping ${file} as HTML file already exists…`);
-    }
+    console.log(`Converting ${file} to HTML…`);
+    writeFileSync(`${outputFolder}/${outputFileName}`, htmlContent);
   });
 }
 
