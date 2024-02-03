@@ -3,9 +3,9 @@ const markedSequentialHooks = require('marked-sequential-hooks');
 const markedHookFrontmatter = require('marked-hook-frontmatter');
 const { readdirSync, readFileSync, writeFileSync, read } = require('fs');
 
-const inputFolder = './blog2/src/md';
-const outputFolder = './blog2';
-const partialsFolder = './blog2/src/partials';
+const inputFolder = './blog/src/md';
+const outputFolder = './blog';
+const partialsFolder = './blog/src/partials';
 const mdFiles = readdirSync(inputFolder).filter((file) => file.endsWith('.md'));
 const postLayoutFileName = 'layout.html';
 const indexFileName = 'index.html';
