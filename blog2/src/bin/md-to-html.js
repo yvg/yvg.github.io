@@ -7,9 +7,11 @@ const inputFolder = './blog2/src/md';
 const outputFolder = './blog2';
 const partialsFolder = './blog2/src/partials';
 const mdFiles = readdirSync(inputFolder).filter((file) => file.endsWith('.md'));
+const postLayoutFileName = 'layout.html';
+const indexFileName = 'index.html';
 
 function layoutHook(html, data) {
-  return readFileSync(`${partialsFolder}/layout.html`, 'utf8')
+  return readFileSync(`${partialsFolder}/${postLayoutFileName}`, 'utf8')
     .replace('${html}', html)
     .replace('${data.title}', data.page.title);
 }
@@ -40,4 +42,19 @@ function writeMdFilesToHtml() {
   });
 }
 
+function writeIndexHtml() {
+  const postLinks = mdFiles.map((file) => {
+    const htmlFile = file.replace('.md', '.html');
+    const html = readFileSync(`${outputFolder}/${htmlFile}`, 'utf8');
+    const title = html.match(/<title>(.*)<\/title>/)[1];
+    return `<li><a href="${htmlFile}">${title}</a></li>`;
+  }).join('\n');
+
+  const indexHtml = readFileSync(`${partialsFolder}/${indexFileName}`, 'utf8').replace('${postLinks}', postLinks);
+
+  console.log(`Writing ${indexFileName}…`)
+  writeFileSync(`${outputFolder}/${indexFileName}`, indexHtml);
+}
+
 writeMdFilesToHtml();
+writeIndexHtml();
