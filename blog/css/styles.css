@@ -16,10 +16,16 @@ a {
   text-decoration: none;
 }
 
+strong {
+  font-variation-settings: 'wght' 700;
+}
+
 body {
   font-family: 'EB Garamond', serif;
   background-color: #faf6e9;
   color: #15171A;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 nav {
