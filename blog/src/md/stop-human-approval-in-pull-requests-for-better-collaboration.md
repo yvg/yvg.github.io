@@ -82,7 +82,7 @@ The details are up to each team, it's hard to prescribe a one-size-fits-all solu
 
 I realise each of these principles could be a blog post on its own, and if time permits, I will explore them in the future.
 
-For now, I hope I have sparked some curiosity and that you will experiment with these ideas in your team.
+For now, I hope I have sparked some curiosity and that you will experiment these ideas with your team.
 
 ## Further inspiration
 
