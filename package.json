@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "feed": "4.2.2",
+    "front-matter": "4.0.2",
     "marked": "11.2.0",
     "marked-hook-frontmatter": "1.4.3",
     "marked-sequential-hooks": "1.2.1"
