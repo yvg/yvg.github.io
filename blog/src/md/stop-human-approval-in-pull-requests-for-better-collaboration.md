@@ -54,6 +54,8 @@ This tends to diminish accountability. Some people are less likely to feel respo
 
 A healthier approach is to foster individual responsibility for one's work. To let authors decide when and when not to ask for help and to be fully accountable for the outcome. Not by blaming them when things go wrong, but by helping them to learn from their mistakes.
 
+This in turn leads to a culture of continuous learning, of increased individual competency, and a more autonomous team.
+
 It's a fantastic way to ensure continuous growth, eliminate the fear of merging, and become better at what we do, truly collaboratively.
 
 ## Context Switching
@@ -70,7 +72,15 @@ Human approval in PRs delays delivery, does not ensure quality, creates friction
 
 Automation and a culture of real-time collaboration, in which everyone assumes best intentions, can replace the need for human approval in its entirety.
 
-The best way to convince oneself is to try it out for a few months and measure the results.
+The details are up to each team, it's hard to prescribe a one-size-fits-all solution, what I can guide you with are principles that usually lay the foundation for a successful transition to a more collaborative workflow:
+
+- **Assume best intentions**
+- **Autonomy through frequent alignment**
+- **Automate everything**
+- **Collaborate in real-time**
+- **Focus on one task at a time**
+
+I realise each of these principles could be a blog post on its own, and if time permits, I will explore them in the future. For now, I hope I have sparked some curiosity and that you will question the status quo in your organisation.
 
 ## Further inspiration
 
