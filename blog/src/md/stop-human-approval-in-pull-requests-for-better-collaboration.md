@@ -80,7 +80,9 @@ The details are up to each team, it's hard to prescribe a one-size-fits-all solu
 - **Collaborate in real-time**
 - **Focus on one task at a time**
 
-I realise each of these principles could be a blog post on its own, and if time permits, I will explore them in the future. For now, I hope I have sparked some curiosity and that you will question the status quo in your organisation.
+I realise each of these principles could be a blog post on its own, and if time permits, I will explore them in the future.
+
+For now, I hope I have sparked some curiosity and that you will experiment with these ideas in your team.
 
 ## Further inspiration
 
