@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Yves Van Goethem's blog</title>
+        <link>https://yves.vg/blog</link>
+        <description>undefined</description>
+        <lastBuildDate>Sun, 04 Feb 2024 10:57:23 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <item>
+            <title><![CDATA[Stop Human Approval in Pull Requests: A case for better collaboration]]></title>
+            <link>https://yves.vg/blog/stop-human-approval-in-pull-requests-for-better-collaboration.html</link>
+            <guid>https://yves.vg/blog/stop-human-approval-in-pull-requests-for-better-collaboration.html</guid>
+            <pubDate>Fri, 02 Feb 2024 00:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>
