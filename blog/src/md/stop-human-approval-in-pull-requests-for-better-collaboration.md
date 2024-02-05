@@ -7,17 +7,19 @@ Feb. 2, 2024
 
 # Stop Human Approval in Pull Requests: A case for better collaboration
 
-Your immediate thought might be: “This is stupid! Human approval in PRs is a fundamental process in software development, it ensures quality, detects issues, is a great way to collaborate, defines governance, helps to learn from each other… aaand everybody does it. It works well for me, I have countless examples.”
+Human Approval in Pull Requests has become a common practice in software development. The approach is championed by big tech, open-source projects and tech influencers. Teams that use it often believe that this approach ensures quality, avoids issues, is collaborative, and helps to learn from each other. "It works well for me" you might say, echoing the sentiment shared by countless others and ingrained in our habits.
 
-Everybody does it. Some famous people, technical influencers, big corporations,… are big proponents of it. And everybody, you, me, and our colleagues who have used PRs are biased by ingrained habits.
-Some claim that it's the only way, that PRs should be long-lived and that each keystroke must be reviewed for absolute technical perfection.
+But what if… What if human approval in PRs is not only unnecessary, but also detrimental to the quality, speed, and collaboration of your teams?
 
-We move from organisation to organisation, from repo to repo, and we repeat the same process over and over again. We don't question it, we just do it.
-When it's not present in small projects, we add it. When an organisation works without it, we introduce it.
+Consider a scenario where a developer submits a PR, eagerly awaiting feedback. However, after a bit of back-and-forth, days pass without any approval, leaving the author and the reviewer frustrated, and the project delayed.
 
-However, we rarely question this choice.
+Sounds familiar?
 
-So… let's question it, let's explore some of the consequences that emanate from it, and some alternatives we can apply to yield better results.
+One more example: A critical decision awaits approval, but the reviewer is absent. The team is stuck, unable to move forward.
+
+I have seen these, and many other scenarios, play out countless times, and I believe that there are better alternatives.
+
+In this article, I hope to give you a new perspective and inspire you to experiment with a more collaborative approach to software development.
 
 ## Delays
 
@@ -54,7 +56,7 @@ This tends to diminish accountability. Some people are less likely to feel respo
 
 A healthier approach is to foster individual responsibility for one's work. To let authors decide when and when not to ask for help and to be fully accountable for the outcome. Not by blaming them when things go wrong, but by helping them to learn from their mistakes.
 
-This in turn leads to a culture of continuous learning, of increased individual competency, and a more autonomous team.
+This in turn leads to a culture of continuous learning, increased individual competency, and a more autonomous team.
 
 It's a fantastic way to ensure continuous growth, eliminate the fear of merging, and become better at what we do, truly collaboratively.
 
@@ -82,7 +84,7 @@ The details are up to each team, it's hard to prescribe a one-size-fits-all solu
 
 I realise each of these principles could be a blog post on its own, and if time permits, I will explore them in the future.
 
-For now, I hope I have sparked some curiosity and that you will experiment these ideas with your team.
+For now, I hope I have sparked some curiosity and that you will experiment with these ideas with your team.
 
 ## Further inspiration
 
