@@ -81,6 +81,7 @@ The details are up to each team, it's hard to prescribe a one-size-fits-all solu
 - **Automate everything**
 - **Collaborate in real-time**
 - **Focus on one task at a time**
+- **Metrics over opinions**
 
 I realise each of these principles could be a blog post on its own, and if time permits, I will explore them in the future.
 
