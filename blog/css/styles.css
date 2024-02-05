@@ -3,17 +3,14 @@
   src: url("./EBGaramond-VariableFont_wght.woff2") format("woff2-variations");
 }
 
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-a {
-  text-decoration: underline;
-  color: inherit;
-  text-decoration: none;
+html {
+  font-size: 16px;
 }
 
 strong {
@@ -28,28 +25,35 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+a {
+  text-decoration: underline;
+  color: inherit;
+  text-decoration: none;
+}
+
+
 nav {
   text-align: center;
   padding: 30px 0 140px 0;
   height: 100px;
-  font-size: 28px;
+  font-size: clamp(100%, 1rem + 4vw, 28px);
   font-variation-settings: 'wght' 550;
 }
 
 h1 {
-  font-size: 58px;
+  font-size: clamp(100%, 1rem + 4vw, 58px);
   font-variation-settings: 'wght' 600;
-  line-height:66px;
+  line-height: clamp(100%, 1rem + 4vw, 66px);
   letter-spacing: -0.58px;
-  width: 720px;
   margin: 0 auto 66px auto;
 }
 
 main {
-  width: 720px;
+  width: 90vw;
+  max-width: 720px;
   margin: 0 auto;
-  font-size: 26px;
-  line-height: 37px;
+  font-size: clamp(100%, 1rem + 4vw, 26px);
+  line-height: clamp(100%, 1rem + 4vw, 37px);
   padding: 0 0 60px 0;
 }
 
@@ -69,11 +73,14 @@ main ul {
 
 main h2 {
   font-size: 45px;
+  /*font-size: 2.8125rem; /* 45px / 16px */
+  /* font-size: 6.25vw; */
   margin-top: 56px;
 }
 
 h2 code {
   font-size: 28px;
+  /*font-size: 1.75rem; /* 28px / 16px */
   vertical-align: middle;
   font-family: 'Courier New', Courier, monospace;
 }
@@ -82,6 +89,8 @@ footer {
   text-align: center;
   padding: 60px 0;
   font-size: 17px;
+  /* font-size: 1.0625rem; /* 17px / 16px */
+  /* font-size: 2.34vw; */
   font-variation-settings: 'wght' 100;
 }
 
