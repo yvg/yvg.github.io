@@ -44,7 +44,7 @@ Bug detection, static analysis, pattern enforcement, test coverage, linting,… 
 
 It's not uncommon to see heated discussions in PRs, with people getting upset, angry, and frustrated. In the worst cases, people have to be reminded to be respectful and professional by their managers, or worse.
 
-Still, well-formulated and well-intentioned comments can still be misinterpreted.
+Still, well-formulated and well-intentioned comments can be misinterpreted.
 
 By removing human approval, we must shift how we interact with one another. A highly successful way to do so is to **pair**, to **mob**, or at least to **pair code-review**. It's much easier to have a conversation about code, share ideas, and learn from each other synchronously with a common contextual understanding, than to try to convey the same context, information and sentiment asynchronously in comments.
 
