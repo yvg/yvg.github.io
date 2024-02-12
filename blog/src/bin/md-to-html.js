@@ -33,6 +33,11 @@ function retrieveFrontmatterAttributes(mdContent) {
   return attributes
 }
 
+function retrieveFrontmatterBody(mdContent) {
+  const { body } = frontmatter(mdContent);
+  return body;
+}
+
 function writeMdFilesToHtml() {
   mdFiles.forEach((file) => {
     const mdContent = readFileSync(`${inputFolder}/${file}`, 'utf8');
@@ -75,9 +80,11 @@ function writeRssFeed() {
   mdFiles.forEach((file) => {
     const mdContent = readFileSync(`${inputFolder}/${file}`, 'utf8');
     const { title, date } = retrieveFrontmatterAttributes(mdContent);
+    const content = retrieveFrontmatterBody(mdContent);
     const htmlFile = file.replace('.md', '.html');
     feed.addItem({
       title,
+      content,
       id: `${rssBaseUrl}/${htmlFile}`,
       link: `${rssBaseUrl}/${htmlFile}`,
       date: new Date(date),
