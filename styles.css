@@ -43,7 +43,8 @@ main h1 {
 }
 main h2 {
   font-family: 'Lora', serif;
-  font-size: 1.2222em; /* 22px */
+  /*font-size: 1.2222em; /* 22px */
+  font-size: 1.3333em; /* 24px */
   line-height: 1.29em;
   margin-bottom: 1.28em;
 }
@@ -55,7 +56,8 @@ address, p, ul {
 }
 dt {
   font-weight: bold;
-  font-size: 1.1111em; /* 20px */
+  /*font-size: 1.1111em; /* 20px */
+  font-size: 1.2222em; /* 22px */
   line-height: 1.4200em;
 }
 dd {
@@ -74,10 +76,10 @@ dd span {
 dt span {
   font-size: 0.80em;
 }
-dt + dt,
+/* dt + dt,
 dd + dt {
   font-weight: normal;
-}
+} */
 ul {
   margin-left: 0;
   list-style-type: none;
@@ -85,4 +87,30 @@ ul {
 section:first-child ul {
   margin-left: 20px;
   list-style-type: circle;
+}
+.employer::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  /* background: url(./assets/tooltimegmbh_logo.jpg); */
+  background-size: 50px;
+  margin-left: -60px
+}
+
+#employer-tooltime::before {
+  background-image: url(./assets/tooltimegmbh_logo.jpg);
+}
+
+#employer-soundcloud::before {
+  background-image: url(./assets/soundcloud_logo.jpg);
+}
+
+#employer-publicis::before {
+  background-image: url(./assets/publicis_logo.jpg);
+}
+
+#employer-digitas::before {
+  background-image: url(./assets/digitas_logo.jpg);
 }
