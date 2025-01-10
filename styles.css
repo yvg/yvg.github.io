@@ -94,9 +94,9 @@ section:first-child ul {
   position: absolute;
   width: 50px;
   height: 50px;
-  /* background: url(./assets/tooltimegmbh_logo.jpg); */
   background-size: 50px;
-  margin-left: -60px
+  margin-left: -60px;
+  margin-top: 4px;
 }
 
 #employer-tooltime::before {
