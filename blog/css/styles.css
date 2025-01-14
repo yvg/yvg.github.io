@@ -99,7 +99,14 @@ main blockquote {
   font-style: italic;
 }
 
-p code {
+main hr {
+  height: 1px;
+  background: #f1e5bf;
+  border: 0;
+  margin: 36px 0;
+}
+
+main code {
   font-size: clamp(100%, 1rem + 4vw, 26px);
   font-family: 'Courier New', Courier, monospace;
   padding: 0 4px;
