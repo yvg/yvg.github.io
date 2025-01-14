@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Separation of concerns in React Apps</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="me" href="https://github.com/yvg">
+    <link rel="me" href="https://indieweb.social/@yvg">
+    <link rel="webmention" href="https://webmention.io/yves.vg/webmention">
+  </head>
+
+  <body>
+    <nav>
+      <a href="/blog">Yves Van Goethem's blog</a>
+    </nav>
+    <main>
+      <p>Mar. 16, 2021</p>
+<h1>Separation of concerns in React Apps</h1>
+<p class="info">
+  This article was orginally published at <a href="https://tooltime.tech/react-apps-separation-of-concerns/">tooltime.tech</a>, it has been copied for archiving purposes.
+</p>
+
+<p>If your React application is difficult to maintain it might be due to the lack of <strong>separation of concerns,</strong> ToolTime&#39;s Apps were encountering such difficulties a year ago.‌‌ The newly hired Engineering Team decided to transform an experimental MVP application, which was mixing concerns and therefor hard to maintain, into a stable, scalable, modular, and qualitative one, with clear separations.</p>
+<h2>What is separation of concerns?</h2>
+<p>Good question.</p>
+<p>In the late 2000s, Web Developers would identify concerns such as <strong>Content (HTML),</strong> <strong>Styling (CSS)</strong> and <strong>Interactions (JavaScript).</strong> If the website was build using a dynamic language such as PHP, one could identify additional concerns, for example Business Logic, Session Persistence, Database Queries (SQL), and many more.</p>
+<p>It used to be pretty common to write HTML (or PHP) files that would mix multiple, if not all of those concerns in a single file. HTML4 was even enabling developers to define styling with HTML tags such as <code>&lt;font&gt;</code>, <code>&lt;marquee&gt;</code>, or <code>&lt;blink&gt;</code>. Nowadays, if we want to achieve effects such as the <code>&lt;blink&gt;</code> tag offered, we would write a CSS animation and target an HTML element with a CSS selector, if we want to display bold text for purely stylistic reasons, we would use the <code>font-weight</code> CSS property instead of using the <code>&lt;b&gt;</code> tag.</p>
+<p>In React Apps we find many similarities with early days websites. Let us go through some of the concerns we have identified and systematically separated in our apps in order to reduce file length, increase clarity, allow for higher collaboration through modularity, and higher maintainability through conventions.</p>
+<h2>Concerns in React</h2>
+<p>Before we dive deeper, let us get familiar with the goal of React, by reading the first line in the <a href="https://reactjs.org/docs/getting-started.html?ref=tooltime.tech">React documentation</a>.</p>
+<blockquote>
+<p>React is a JavaScript library for building user interfaces.</p>
+</blockquote>
+<p>Alright, let&#39;s identify the common concerns of a user interface:</p>
+<ul>
+<li>Routing</li>
+<li>Content</li>
+<li>Styling</li>
+<li>Interactions</li>
+</ul>
+<h2>Routing</h2>
+<p><strong>🛣 Routing binds a URL to a React component.</strong></p>
+<p>When we enter a URL in our browser, or when we click on a link, we expect the application to load a page. In a Single Page Application, this is the responsibility of a Router.</p>
+<p>Various React apps introduce complexity by using a mixture of two paradigms: <strong>Application routing</strong> and <strong>Nested routing.</strong></p>
+<p>Let us define these two terms first to create common understanding with the examples of react-router-dom. In these examples we will imagine a simple application that routes to a home page, a user profile, and a user profile edit page.</p>
+<p><strong>Application routing</strong> introduces a unique application-wide Router and associated routes, listening to URL changes, and its responsibility is to render a different page for each route.</p>
+<pre><code class="language-js">// App.jsx
+const App = () =&gt; {
+  return (
+    &lt;Router&gt;
+      &lt;Switch&gt;
+        &lt;Route path=&quot;/&quot; component={&lt;HomePage /&gt;} /&gt;
+        &lt;Route path=&quot;/profile/:username&quot; component={&lt;ProfilePage /&gt;} /&gt;
+        &lt;Route path=&quot;/profile/:username/edit&quot; component={&lt;ProfileEditPage /&gt;} /&gt;
+      &lt;/Switch&gt;
+    &lt;/Router&gt;
+  );
+};
+</code></pre>
+<p><strong>Nested routing</strong> introduces multiple routers nested within each other. In this example the App.jsx file includes a <Router>, and so does the ProfileWithRouter.jsx file.</p>
+<pre><code class="language-js">// App.jsx
+const App = () =&gt; {
+  return (
+    &lt;Router&gt;
+      &lt;Switch&gt;
+        &lt;Route path=&quot;/&quot; component={&lt;HomePage /&gt;} /&gt;
+        &lt;Route path=&quot;/profile/:username&quot; component={&lt;ProfileWithRouter /&gt;} /&gt;
+      &lt;/Switch&gt;
+    &lt;/Router&gt;
+  );
+};
+
+// ProfileWithRouter.jsx
+const ProfileWithRouter = () =&gt; {
+  const match = useRouteMatch();
+  return (
+    &lt;Router&gt;
+      &lt;Switch&gt;
+        &lt;Route path={`${match.path}/edit`} component={&lt;ProfileEditPage /&gt;} /&gt;
+        &lt;Route path={match.path} component={&lt;ProfilPage /&gt;} /&gt;
+      &lt;/Switch&gt;
+    &lt;/Router&gt;
+  );
+};
+</code></pre>
+<p>Now, if the <strong>Nested routing</strong> principle follows clear team conventions across the whole application, and is perhaps even enforced through tooling, then this approach is not, per se, a knotty strategy. However, if conventions cannot be enforced or aren&#39;t followed, it can lead to maintainability issues. In our Apps, it led to vague responsibilities, and <strong>obscurity</strong> about which components handle which routes, why, and how, one of the many questions was &quot;should these components also render content?&quot;. We found it made it particularly hard for a new team to take over a project, or for a new colleague to get a quick understanding of the application.</p>
+<p><strong>Application routing</strong> has an advantage in that it offers <strong>centralised clarity</strong> about all reachable parts of the application, if properly isolated it does not even need to live in App.jsx, it can live in its own file, away from other UI concerns. So we moved all routing logic to an <strong>Application routing</strong> strategy and isolated it like so:</p>
+<ol>
+<li>Store routes as an array of objects</li>
+</ol>
+<pre><code class="language-js">// Routes.js
+export const routes = [
+  {
+    path: &quot;/&quot;,
+    component: HomePage,
+  },
+  {
+    path: &quot;/profile/:id&quot;,
+    component: ProfilePage,
+  },
+  {
+    path: &quot;profile/:id/edit&quot;,
+    componentt: ProfileEditPage,
+  },
+];
+</code></pre>
+<ol start="2">
+<li>Consume the routes in a router:</li>
+</ol>
+<pre><code class="language-js">// Router.jsx
+import { BrowserRouter, Switch, Route } from &#39;react-router-dom&#39;;
+import {routes} from &#39;./routes&#39;;
+
+export const Router = () =&gt; {
+  return (
+    &lt;BrowserRouter&gt;
+      &lt;Switch&gt;
+        {routes.map({ path, component }) =&gt; {
+          &lt;Route path={path} component={component} /&gt;
+        })}
+      &lt;/Switch&gt;
+    &lt;/BrowserRouter&gt;
+  );
+};
+</code></pre>
+<ol start="3">
+<li>Import the router in the App</li>
+</ol>
+<pre><code class="language-js">// App.jsx
+import {Router} from &quot;Router&quot;;
+
+export const App = () =&gt; {
+  return &lt;Router /&gt;;
+};
+</code></pre>
+<p>This solution is not unique to ToolTime, it is already widely used by the React community, and is central to many opinionated frameworks such as Backbone, Vue, or Angular.</p>
+<p>So this is how we solved Routing: we centralised the routing logic, and removed nested routing from components. Developers benefit from clarity, and routing concerns are separated from other concerns.</p>
+<hr>
+<h2>Content</h2>
+<p><strong>📰 Content describes the semantics of a component.</strong></p>
+<p>It might be interactive content such as <code>&lt;video&gt;</code>, or <code>&lt;img&gt;</code>. Or actionable content like form elements with <code>&lt;button&gt;</code> or <code>&lt;input&gt;</code>, or a link to another page with an anchor tag <code>&lt;a&gt;</code>. In most cases however, it will be text described as paragraphs with <code>&lt;p&gt;</code>, headings with <code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>,… unordered lists with <code>&lt;ul&gt;</code>, etc. And other tags such as <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code> to structure the content in a page.</p>
+<p>For this example we will render a blog post with what is known as <strong>divitus</strong>, the excessive usage of <code>&lt;div&gt;</code>, in detriment of semantic HTML tags.</p>
+<pre><code class="language-js">// BlogPost.jsx
+export const BlogPost = () =&gt; {
+  return (
+    &lt;&gt;
+      &lt;div&gt;How much I like banana bread&lt;/div&gt;
+      &lt;div&gt;
+        I looooove banana bread!
+        &lt;br /&gt;
+        Very very much!
+      &lt;/div&gt;
+    &lt;/&gt;
+  );
+};
+</code></pre>
+<p>The above example has no semantic value: a browser, a search engine, or a screen-reader is unable to tell which text is the title, and which text is the post&#39;s content.</p>
+<p>Let&#39;s solve this with semantics:</p>
+<pre><code class="language-js">// BlogPost.jsx
+export const BlogPost = () =&gt; {
+  return (
+    &lt;&gt;
+      &lt;h1&gt;How much I like banana bread&lt;/h1&gt;
+      &lt;p&gt;
+        I looooove banana bread! &lt;br /&gt;
+        Very very much!
+      &lt;/p&gt;
+    &lt;/&gt;
+  );
+};
+</code></pre>
+<p>This was easy. Beyond semantics, HTML also provides build-in functionalities, such as form validation, dns pre-fetching, and much more. Check out the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML?ref=tooltime.tech">MDN HTML guide</a> for more.</p>
+<h3>⚠️ Content anti-patterns</h3>
+<p>Beware of anti-patterns, many React components available throughout the libraries in the community, will provide some functionality without rendering anything.</p>
+<p>While this is accepted by many as &quot;normal&quot;, we do believe that this goes beyond the responsibilities of a UI library. Expressing functionalities, such as data-fetching for example, are better expressed with functions, or with React hooks, than they are with JSX.</p>
+<p>For example we forbid the usage of Apollo&#39;s <code>&lt;Query&gt;</code> component, instead we rely on Apollo&#39;s functional API to fetch data and extract that responsibility to a different file.</p>
+<p>Alright let&#39;s dive into the next topic: Styling.</p>
+<hr>
+<h2>Styling</h2>
+<p><strong>💅 Styling defines the look and feel of a component.</strong></p>
+<p>Many tools such as JSS, CSS Modules, Emotion,… can be used to style components.
+What is also pretty common in various documentations is to &quot;co-locate&quot; styles with the component functionality in the same file, such as this:</p>
+<pre><code class="language-js">// BlogPost.jsx
+const styles = {
+  title: {
+    color: &#39;red&#39;
+  }
+};
+
+export const BlogPost = () =&gt; {
+  return (
+    &lt;h1 className={styles.title}&gt;How much I like banana bread&lt;/h1&gt;
+    &lt;p&gt;I looooove banana bread!&lt;/p&gt;
+    &lt;p&gt;Very very much!&lt;/p&gt;
+  );
+};
+</code></pre>
+<p>While this might seem harmless in many cases, it becomes increasingly difficult to maintain when the styles grow in size, and the component grows in complexity.</p>
+<p>The solution we advocate, is to separate these two concerns in different files, no matter how many lines of code, the result then looks somewhat like this:</p>
+<pre><code class="language-js">// BlogPost.styles.js
+export const styles = {
+  title: {
+    color: &quot;red&quot;,
+  },
+};
+</code></pre>
+<pre><code class="language-js">// BlogPost.jsx
+import {styles} from &#39;./BlogPost.styles&#39;;
+export const BlogPost = () =&gt; {
+  return (
+    &lt;h1 className={styles.title}&gt;How much I like banana bread&lt;/h1&gt;
+    &lt;p&gt;I looooove banana bread!&lt;/p&gt;
+    &lt;p&gt;Very very much!&lt;/p&gt;
+  );
+};
+</code></pre>
+<p>Beyond the advantage of creating smaller clearer maintainable files, the next author won&#39;t have to break up a file that grew in complexity.</p>
+<h2>Interactions</h2>
+<p>Let&#39;s imagine we want to render a button that behaves as a toggle for an information to be displayed below (that I love banana bread).</p>
+<pre><code class="language-js">// ButtonWithContent.jsx
+export const ButtonWithContent = () =&gt; {
+  const [isEnabled, setIsEnabled] = useState(false);
+  const clickHandler = () =&gt; {
+    setIsEnabled(!isEnabled);
+  };
+  return (
+    &lt;&gt;
+      &lt;button onClick={clickHandler}&gt;Toggle information&lt;/button&gt;
+      {isEnabled &amp;&amp; &lt;p&gt;I love banana bread&lt;/p&gt;}
+    &lt;/&gt;
+  );
+};
+</code></pre>
+<p>This component contains multiple concerns now:</p>
+<ul>
+<li>A state <code>isEnabled</code> and its setter <code>setIsEnabled</code> expressed via React&#39;s <code>useState</code> hook.</li>
+<li>An event handler <code>clickHandler</code> toggling the state everytime the button is clicked.</li>
+<li>Stateful JSX that will conditionally render the <code>&lt;p&gt;</code> content.</li>
+</ul>
+<p>Again, in many cases this will seem harmless, the file feels small and readable, but as soon as the feature grows in complexity, the next developer will need to decide to keep adding to it, or to move these concerns to a different file.</p>
+<p>Moving behaviours out of the component can be achieved immediately, one way is to use React Hooks like so:</p>
+<pre><code class="language-js">// ButtonWithContent.behaviour.js
+export const useButtonWithContentBehaviour = () =&gt; {
+  const [isEnabled, setIsEnabled] = useState(false);
+  const clickHandler = () =&gt; {
+    setIsEnabled(!isEnabled);
+  };
+  return {
+    clickHandler: clickHandler,
+    isEnabled: isEnabled,
+  };
+};
+</code></pre>
+<p>Now the concerns of interactions are separated from the component&#39;s rendering concerns. The component calls a hook to retrieve the state and the click handler from the behaviour:</p>
+<pre><code class="language-js">// ButtonWithContent.jsx
+import {useButtonWithContentBehaviour} from &quot;./ButtonWithContent.behaviour&quot;;
+export const ButtonWithContent = () =&gt; {
+  const { clickHandler, isEnabled } = useButtonWithContentBehaviour();
+  return (
+    &lt;&gt;
+      &lt;button onClick={clickHandler}&gt;Toggle information&lt;/button&gt;
+      {isEnabled &amp;&amp; &lt;p&gt;I love banana bread&lt;/p&gt;}
+    &lt;/&gt;
+  );
+};
+</code></pre>
+<h2>Finally</h2>
+<p>We follow these principles because we find that they work for us, not every solution fits every context, you might need to adapt these ideas slightly to fit your needs, or perhaps you will need to look elsewhere for other solutions.</p>
+<p>To us, large intricated software problems, become <strong>small solvable problems</strong> when they are split. Defining boundaries and responsibilities helped us refactor large messy files into clearer, smaller, maintainable files ; eventually this discipline has led to more readable, scalable, and testable software.</p>
+
+    </main>
+
+    <footer>
+      <p>
+        <a href="/" title="About Yves Van Goethem">About</a>
+        <a href="rss.xml" title="RSS feed">RSS</a>
+        <a href="https://indieweb.social/web/@yvg" title="Yves Van Goethem on Mastodon">Mastodon</a>
+        <a href="https://www.linkedin.com/in/yvg/" title="Yves Van Goethem on LinkedIn">LinkedIn</a>
+      </p>
+      <p>Yves Van Goethem, all rights reserved.</p>
+      <p>No cookies 🖤</p>
+    </footer>
+  </body>
+</html>
