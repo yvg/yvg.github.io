@@ -44,13 +44,41 @@ function writeMdFilesToHtml() {
   });
 }
 
-function writeIndexHtml() {
-  const postLinks = mdFiles.map((file) => {
+function getArticlesAssignedByYear() {
+  const articlesByYear = new Map();
+
+  mdFiles.forEach((file) => {
     const mdContent = readFileSync(`${inputFolder}/${file}`, 'utf8');
-    const { title } = retrieveFrontmatterAttributes(mdContent);
-    const htmlFile = file.replace('.md', '.html');
-    return `<li><a href="${htmlFile}">${title}</a></li>`;
-  }).join('\n');
+    const { date, title } = retrieveFrontmatterAttributes(mdContent);
+    const year = new Date(date).getFullYear();
+
+    if (!articlesByYear.has(year)) {
+      articlesByYear.set(year, []);
+    }
+
+    articlesByYear.get(year).push({
+      file: file,
+      title: title
+    });
+  });
+
+  return new Map([...articlesByYear.entries()]
+    .sort((a, b) => b[0].toString().localeCompare(a[0].toString(), undefined, { numeric: true }))
+    .filter(([year]) => !isNaN(Number(year))));
+}
+
+function writeIndexHtml() {
+  const articlesAssignedByYear = getArticlesAssignedByYear()
+  let postLinks = ''
+  for (const [year, articles] of articlesAssignedByYear) {
+    postLinks += `<h3>${year}</h3><ul>`
+    articles.forEach((article) => {
+      const { file, title } = article
+      const htmlFile = file.replace('.md', '.html');
+      postLinks +=`<li><a href="${htmlFile}">${title}</a></li>`
+    })
+    postLinks +=`</ul>`
+  }
 
   const indexHtml = readFileSync(`${partialsFolder}/${indexFileName}`, 'utf8').replace('${postLinks}', postLinks);
 

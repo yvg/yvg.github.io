@@ -88,6 +88,43 @@ h2 code {
   font-family: 'Courier New', Courier, monospace;
 }
 
+main h3 {
+  font-size: clamp(100%, 1rem + 4vw, 35px);
+  margin-top: 36px;
+}
+
+main blockquote {
+  border-left: 4px solid #f1e5bf;
+  padding-left: 20px;
+  font-style: italic;
+}
+
+p code {
+  font-size: clamp(100%, 1rem + 4vw, 26px);
+  font-family: 'Courier New', Courier, monospace;
+  padding: 0 4px;
+  background: #fae9f5;
+}
+
+main pre {
+  padding: 4px 8px;
+  margin-top: 36px;
+  overflow: scroll;
+  overflow-y:scroll;
+  background: #fae9f5;
+}
+
+pre code {
+  font-size: clamp(100%, 1rem + 4vw, 26px);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+p.info {
+  background: #e9edfa;
+  padding: 8px;
+  font-size: clamp(100%, 1rem + 4vw, 26px);
+}
+
 footer {
   text-align: center;
   padding: 60px 0;

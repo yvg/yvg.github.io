@@ -9,6 +9,17 @@
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <item>
+            <title><![CDATA[2 seconds build time with ESbuild]]></title>
+            <link>https://yves.vg/blog/2-seconds-build-time-with-esbuild.html</link>
+            <guid>https://yves.vg/blog/2-seconds-build-time-with-esbuild.html</guid>
+            <pubDate>Mon, 17 Jan 2022 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <link>https://yves.vg/blog/autonomy-through-frequent-alignment.html</link>
+            <guid>https://yves.vg/blog/autonomy-through-frequent-alignment.html</guid>
+            <pubDate>Invalid Date</pubDate>
+        </item>
+        <item>
             <title><![CDATA[Stop Human Approval in Pull Requests: A case for better collaboration]]></title>
             <link>https://yves.vg/blog/stop-human-approval-in-pull-requests-for-better-collaboration.html</link>
             <guid>https://yves.vg/blog/stop-human-approval-in-pull-requests-for-better-collaboration.html</guid>
