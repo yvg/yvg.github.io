@@ -86,9 +86,7 @@ const ProfileWithRouter = () =&gt; {
 </code></pre>
 <p>Now, if the <strong>Nested routing</strong> principle follows clear team conventions across the whole application, and is perhaps even enforced through tooling, then this approach is not, per se, a knotty strategy. However, if conventions cannot be enforced or aren&#39;t followed, it can lead to maintainability issues. In our Apps, it led to vague responsibilities, and <strong>obscurity</strong> about which components handle which routes, why, and how, one of the many questions was &quot;should these components also render content?&quot;. We found it made it particularly hard for a new team to take over a project, or for a new colleague to get a quick understanding of the application.</p>
 <p><strong>Application routing</strong> has an advantage in that it offers <strong>centralised clarity</strong> about all reachable parts of the application, if properly isolated it does not even need to live in App.jsx, it can live in its own file, away from other UI concerns. So we moved all routing logic to an <strong>Application routing</strong> strategy and isolated it like so:</p>
-<ol>
-<li>Store routes as an array of objects</li>
-</ol>
+<p>#1 Store routes as an array of objects</p>
 <pre><code class="language-js">// Routes.js
 export const routes = [
   {
@@ -105,9 +103,7 @@ export const routes = [
   },
 ];
 </code></pre>
-<ol start="2">
-<li>Consume the routes in a router:</li>
-</ol>
+<p>#2 Consume the routes in a router:</p>
 <pre><code class="language-js">// Router.jsx
 import { BrowserRouter, Switch, Route } from &#39;react-router-dom&#39;;
 import {routes} from &#39;./routes&#39;;
@@ -124,9 +120,7 @@ export const Router = () =&gt; {
   );
 };
 </code></pre>
-<ol start="3">
-<li>Import the router in the App</li>
-</ol>
+<p>#3 Import the router in the App</p>
 <pre><code class="language-js">// App.jsx
 import {Router} from &quot;Router&quot;;
 
