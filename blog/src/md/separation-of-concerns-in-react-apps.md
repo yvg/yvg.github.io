@@ -96,7 +96,7 @@ Now, if the **Nested routing** principle follows clear team conventions across t
 
 **Application routing** has an advantage in that it offers **centralised clarity** about all reachable parts of the application, if properly isolated it does not even need to live in App.jsx, it can live in its own file, away from other UI concerns. So we moved all routing logic to an **Application routing** strategy and isolated it like so:
 
-1. Store routes as an array of objects
+#1 Store routes as an array of objects
 
 ```js
 // Routes.js
@@ -116,7 +116,7 @@ export const routes = [
 ];
 ```
 
-2. Consume the routes in a router:
+#2 Consume the routes in a router:
 
 ```js
 // Router.jsx
@@ -136,7 +136,7 @@ export const Router = () => {
 };
 ```
 
-3. Import the router in the App
+#3 Import the router in the App
 
 ```js
 // App.jsx
