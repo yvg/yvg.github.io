@@ -261,6 +261,8 @@ export const BlogPost = () => {
 
 Beyond the advantage of creating smaller clearer maintainable files, the next author won't have to break up a file that grew in complexity.
 
+---
+
 ## Interactions
 
 Let's imagine we want to render a button that behaves as a toggle for an information to be displayed below (that I love banana bread).
