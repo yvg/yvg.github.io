@@ -63,7 +63,7 @@ const App = () => {
 };
 ```
 
-**Nested routing** introduces multiple routers nested within each other. In this example the App.jsx file includes a <Router>, and so does the ProfileWithRouter.jsx file.
+**Nested routing** introduces multiple routers nested within each other. In this example the App.jsx file includes a `<Router>`, and so does the ProfileWithRouter.jsx file.
 
 ```js
 // App.jsx
