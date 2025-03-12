@@ -73,7 +73,8 @@ main p {
   font-variation-settings: 'wght' 100;
 }
 
-main ul {
+main ul,
+main ol {
   margin: 36px 0 0 26px;
 }
 
