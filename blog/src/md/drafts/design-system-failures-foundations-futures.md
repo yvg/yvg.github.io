@@ -7,17 +7,25 @@ Mar. 18, 2025
 
 # Design System, Part 1: Failures, Foundations, Futures
 
+// Vincent: What's a rigid themable design system?
 This is the first part in a series about how I coordinated the development of a **rigid themable design system** at <a href="https://tooltime.app">ToolTime.</a>
 
+// Vincent: I think this could be a little simpler:
+// In this first post, we will outline the context in which the decision to build a rigid design system was made. It's about people, their skills, and their teams.
 In this first post, we will dive into the historical choices, the learnings of peoples and teams, and the evolving technicalities and mindsets that eventually led us to build a rigid design system.
 
 ## Short history
 
+// Vincent: 
 When I started at ToolTime in summer 2019, Web and Mobile React applications had been build by a consultancy and various freelancers. The result had been a working proof of concept with paying customers, however the codebases had been build with varying approaches.
 
+// Vincent: Would be good to have links/footnotes for the patterns you mention.
 The previous authors had decided on using tools such as MaterialUI, JSS, SASS and CSS Modules, and a few patterns such as the "container pattern" and "colocated styles". In addition, the different application layers and modules were tightly coupled. There were no identifiable CSS patterns such as Atomic Design, BEM, OOCSS, etc. Not even linting rules or conventions.
 
+// Vincent: Why did it impact the velocity? You can't say immensly without explaining why.
 The mixture made for difficult readability and inflexible software, which immensily impacted our velocity.
+
+// Vincent: What is MUI?
 They did write a `design-system` folder, however the result suffered from the same problems, and acted more like a showcase of MUI usage.
 
 The first step I took was to lead the team to agree on principles, so we came up with these:
@@ -27,8 +35,10 @@ The first step I took was to lead the team to agree on principles, so we came up
 - Follow <a href="https://yves.vg/blog/separation-of-concerns-in-react-apps.html">Separation of Concerns</a> to enhance maintainability.
 - Write <strong>hyper specific styles</strong> (more on that in the second post).
 - Test accross multiple browsers to ensure compatibility.
+// Vincent: What is Emotion? (the link is later in the article)
 - Use Emotion for some flexibility.
 
+// Vincent: What do you mean with other codebases? Probably the backend systems?
 We also encountered premature abstractions and tight-coupling in other codebases. In addition to the specific front-end agreements, our Head Of Engineering suggested to optimise code for deletion. We introduced layered modular architecture, isolation, and <abbr title="Write Every Time">WET</abbr> principles to avoid repeating the mistakes of the past.
 
 With these foundations, colocated JSS and hacked MUI components started to fade month by month.
@@ -39,6 +49,7 @@ By winter 2020, we had accelerated our feature releases on a daily basis, and st
 
 Due to our embrace of the WET principle, and the lack of clear UI and UX vision at that point, we wrote components using vanilla HTML/JSX & CSS. We aimed to avoid the rigid situation we inherited, and since we were uncertain about the specific needs of the customers, we chose not to invest in code shareability yet.
 
+// Vincent: What is the SoC pattern?
 With designers now leading the vision for reusable UI, we extended our agreements and introduced the <abbr title="object-oriented css">OOCSS</abbr> pattern as our first attempt at shareability. We created reusable styles for buttons, links, inputs, lists, boxes, etc. With time and a lot of "search and replace", we removed the hand-written styles and replaced them with shared OOCSS classes. To align this with the SoC pattern we leveraged Emotion's <a href="https://emotion.sh/docs/composition">composition feature</a> to avoid "classitis" and tight-coupling.
 
 Why did we invest in shared styles instead of sharing components? There were a few reasons for this:
@@ -65,10 +76,14 @@ As a next step, we created space for experimentation and encouraged presentation
 
 In the Web codebase, a few engineers set out to create shareable components. They were ambitious and developed a small component library over multiple weeks, exposing components like `<Input />`, `<List />`, and `<Button />`.
 
+// Vincent: I think you need to rephrase the latter part. It's pretty mean :D
+// "They achieved their goal of eliminating lines of code but focused too much on DRY and failed to achieve the goals of a component library"
+// btw, you did not clearly outline the goals/principles of a component library yet.
 They frequently reported on their progress and began using these components in the codebase. However it soon became clear that their efforts were not addressing the initial concerns. Instead, they focused on pleasing their preconceived notion of "good software", such as eliminating lines of code and DRYing-up code for the sake of it.
 
 The result resembled component libraries like MUI more than a predictable design-system. And components showed the same symptoms as the initial codebase, to name only a few:
 
+// Vincent: It'd be great to have an example, but I understand it might be too much / not easy
 - Unpredictable contracts that allowed for a mix of different inputs (e.g., data, functions, JSX elements).
 - Contracts that catered to specific, uncommon use cases, which were not specified by designers.
 - Implementations that were not agnostic and sometimes included business logic and module-specific type definitions.
@@ -140,6 +155,7 @@ I will explore how we used the Atomic Design Pattern as a foundation in my next 
 
 By introducing a clear technical vision we had improved our codebases flexibility, readability and maintainability by letting go of past decisions. We enhanced people's understanding of software design patterns and principles, and bridged the gap in collaboration with designers. We clarified our expectations towards the responsibilities and governance of a potential design-system by running initiatives, experiments, and following-up with weekly discussions.
 
+// Vincent: Not 100% sure what "Governance and collaboration can be approached pragmatically, and become a priority when specific business needs arise" means here.
 I also learned to accept simultaneous competing ideas, as long as their costs did not burden us. Governance and collaboration can be approached pragmatically, and become a priority when specific business needs arise.
 
 Finally, shared styles continue to have a place in the world of seemingly omnipresent design-systems and component libraries. At the same time, front-end patterns are more relevant than ever, and mastering them is essential for creating strong foundations that enable maintainable and flexible software, while paving the way for new business opportunities.
