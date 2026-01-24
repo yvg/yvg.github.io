@@ -165,3 +165,8 @@ That's my take. Yours might be different. I only hope this voice makes it throug
 - [Trunk Based Development](https://trunkbaseddevelopment.com/)
 - [The SCARF Model](https://en.wikipedia.org/wiki/SCARF_model)
 - [Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity](https://arxiv.org/abs/2507.09089)
+
+
+## Acknowledgements
+
+Special thanks to [Arbo](https://www.linkedin.com/in/arbovm) for their valuable feedback and encouragement 👋.
