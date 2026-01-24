@@ -50,7 +50,7 @@ These teams wrote the highest quality software and shipped continuously, in the 
  - the right mix of pairing and individual work.
  - cross-disciplinary work with designers, engineers and managers at all important steps.
 
-As I write this down, I realise this pretty much matches the [SCARF model](https://en.wikipedia.org/wiki/SCARF_model): the teams that feel the safest psychologically produce the highest quality software.
+As I write this down, I realise this pretty much matches the [SCARF model](https://en.wikipedia.org/wiki/SCARF_model). Among teams with similar skills, the ones that felt safest shipped the highest quality software.
 
 Therefore, if your aim is to improve team productivity, **you need to invest in communication and collaboration first and foremost.**
 
@@ -142,7 +142,7 @@ I'm still figuring this out.
 
 So where does this leave you?
 
-If your team doesn't trust each other, AI won't fix it. If your codebase is a tangled mess, AI will make it worse. AI is a multiplier. Fix the fundamentals first.
+If your team doesn't trust each other, AI won't fix it. If your codebase is a tangled mess, AI will make it worse. AI is a multiplier. Review the fundamentals first.
 
 But if you've got the basics right, AI can accelerate everything. Boilerplate, research, refactoring, even wireframing. The gains are real.
 
