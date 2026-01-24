@@ -56,7 +56,7 @@ Therefore, if your aim is to improve team productivity, **you need to invest in 
 
 What does this have to do with AI? AI does not fix broken team dynamics. If people don't work well together, adding AI into the mix won't help. It will only make things worse.
 
-## Trust Is Visible in Workflow
+## Trust Is Visible in the Workflow
 
 One of the easiest ways to spot dysfunction in a team is to observe how they ship a single feature.
 
@@ -97,7 +97,7 @@ AI struggles with tangled dependencies. What helps: clear boundaries between lay
 
 The same goes for patterns. Repository pattern, dependency injection, service layers. Boring, well-known, over-represented in training data. AI knows them deeply. The latest meta-framework with its own abstractions? AI hasn't seen enough examples. It will hallucinate.
 
-What about tech stack? Every framework you add is friction. I can't claim to have seen many AI-augmented teams, but in my own experience, running 3 repos in a single workspace has made all the difference. It makes me question every decision to split things apart. One language, one set of architectural principles, one way of doing things across frontend and backend. Boringly consistent. AI thrives on consistency.
+What about tech stack? Every framework you add is friction. I can't claim to have seen many AI-augmented teams, but in my own experience, running 3 repos in a single IDE workspace, instead of switching between separate projects, has made all the difference. It makes me question every decision to split things apart. One language, one set of architectural principles, one way of doing things across frontend and backend. Boringly consistent. AI thrives on consistency.
 
 Same for code readability. AI should infer intent from well-named functions, clear types, and small, focused modules. So should people. If you're spending hours writing documentation for AI agents, you've already lost.
 
@@ -108,7 +108,7 @@ None of this is new. Complexity is the killer of software. The "boring technolog
 
 ## My Productivity Gains
 
-I'm building [fluado](https://fluado.com). We're three people. Here's what changed with AI.
+I'm building [fluado](https://fluado.com). We're three people. Here's what changed with AI. I do most of this inside an IDE with agentic chat. Same model, same window, whether I'm researching or coding.
 
 Boilerplate got faster. Resolvers, repositories, service layers, type definitions. Sometimes AI drafts and I refine. But the best results come from the opposite: I draft one, AI learns the pattern and repeats it. Hours became minutes.
 
@@ -151,7 +151,7 @@ Don't trust influencers selling weekend SaaS dreams. Take headlines claiming AI 
 Experiment for yourself. Measure what matters. Adjust.
 
 - AI is a multiplier. It amplifies what you already have: good or bad.
-- Team dynamics come first. Trust, autonomy, psychological safety.
+- Team dynamics come first. Invest in trust, autonomy, psychological safety, and skills.
 - Then architecture: clear boundaries, boring patterns, repeatability over DRY.
 - Personal gains are real, but only if you set up boundaries early.
 - What's next: AI as an organisational multiplier. Still figuring that out.
@@ -169,4 +169,4 @@ That's my take. Yours might be different. I only hope this voice makes it throug
 
 ## Acknowledgements
 
-Special thanks to [Arbo](https://www.linkedin.com/in/arbovm) for their valuable feedback and encouragement 👋.
+Special thanks to [Arbo](https://www.linkedin.com/in/arbovm) and [Hannes](https://mastodon.xyz/@pht) for their valuable feedback and encouragement 👋.
