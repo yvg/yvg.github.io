@@ -1,3 +1,10 @@
+---
+title: "AI: Productivity Multiplier, Dysfunction Amplifier"
+date: 2026-01-25
+---
+
+Jan. 25, 2026
+
 # AI: Productivity Multiplier, Dysfunction Amplifier
 
 For a few years now LLMs have reshaped how millions of people retrieve information, work on a daily basis, entertain themselves, and imagine the future.
