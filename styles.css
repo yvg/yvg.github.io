@@ -241,11 +241,13 @@ main > p:first-child {
 
 /* ------------------------------------------------------- homepage ------ */
 
-/* square, 4 units tall at every breakpoint, so the text below stays on grid */
+/* Square, 4 units tall at every breakpoint, so the text below stays on grid.
+   Stacked on phones; from the tablet up it sits beside the greeting. */
 .portrait {
   width: 112px;
   height: 112px;
   margin-bottom: 28px;
+  flex: none;
 }
 
 .portrait img {
@@ -315,6 +317,17 @@ main > p:first-child {
 
   main > p:first-child { font-size: 14px; line-height: 32px; margin-bottom: 32px; }
 
+  /* 128 photo + 32 below = 160 = 5u */
+  .greeting {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .greeting .portrait,
+  .greeting h1 { margin-bottom: 0; }
+
   .portrait { width: 128px; height: 128px; margin-bottom: 32px; }
   .postlist li + li { margin-top: 32px; }
   .postlist .meta { font-size: 15px; line-height: 32px; }
@@ -351,6 +364,8 @@ main > p:first-child {
 
   main > p:first-child { line-height: 37px; margin-bottom: 37px; }
 
+  /* 148 photo + 37 below = 185 = 5u */
+  .greeting { gap: 28px; margin-bottom: 37px; }
   .portrait { width: 148px; height: 148px; margin-bottom: 37px; }
   .postlist li + li { margin-top: 37px; }
   .postlist .meta { font-size: 16px; line-height: 37px; }
