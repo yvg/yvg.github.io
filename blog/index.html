@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yves Van Goethem's blog</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="/styles.css">
     <link rel="me" href="https://github.com/yvg">
     <link rel="me" href="https://indieweb.social/@yvg">
     <link rel="webmention" href="https://webmention.io/yves.vg/webmention">
@@ -12,19 +12,25 @@
 
   <body>
     <nav>
-      <a href="/blog">Yves Van Goethem's blog</a>
+      <a class="site" href="/">Yves Van Goethem</a>
+      <ul>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="/cv/">CV</a></li>
+        <li><a href="/motivations.html">Motivations</a></li>
+      </ul>
     </nav>
+
     <main>
       <h1>Posts</h1>
-      <h3>2026</h3><ul><li><a href="ai_productivity_multiplier_dysfunction_amplifier.html">AI: Productivity Multiplier, Dysfunction Amplifier</a></li></ul><h3>2025</h3><ul><li><a href="autonomy-through-frequent-alignment.html">Autonomy through frequent Alignment</a></li></ul><h3>2024</h3><ul><li><a href="stop-human-approval-in-pull-requests-for-better-collaboration.html">Stop Human Approval in Pull Requests: A case for better collaboration</a></li></ul><h3>2022</h3><ul><li><a href="2-seconds-build-time-with-esbuild.html">2 seconds build time with ESbuild</a></li></ul><h3>2021</h3><ul><li><a href="hello-tech-time-good-bye-tech-debt.html">Hello Tech Time, Goodbye Tech Debt</a></li><li><a href="separation-of-concerns-in-react-apps.html">Separation of concerns in React Apps</a></li></ul>
+      <ul class="archive"><li><time datetime="2026-01-25">Jan. 25, 2026</time><a href="ai_productivity_multiplier_dysfunction_amplifier.html">AI: Productivity Multiplier, Dysfunction Amplifier</a></li><li><time datetime="2025-03-12">Mar. 12, 2025</time><a href="autonomy-through-frequent-alignment.html">Autonomy through frequent Alignment</a></li><li><time datetime="2024-02-12">Feb. 12, 2024</time><a href="stop-human-approval-in-pull-requests-for-better-collaboration.html">Stop Human Approval in Pull Requests: A case for better collaboration</a></li><li><time datetime="2022-01-17">Jan. 17, 2022</time><a href="2-seconds-build-time-with-esbuild.html">2 seconds build time with ESbuild</a></li><li><time datetime="2021-06-01">Jun. 01, 2021</time><a href="hello-tech-time-good-bye-tech-debt.html">Hello Tech Time, Goodbye Tech Debt</a></li><li><time datetime="2021-03-16">Mar. 16, 2021</time><a href="separation-of-concerns-in-react-apps.html">Separation of concerns in React Apps</a></li></ul>
     </main>
 
     <footer>
       <p>
-        <a href="/" title="About Yves Van Goethem">About</a>
-        <a href="rss.xml" title="RSS feed">RSS</a>
-        <a href="https://indieweb.social/web/@yvg" title="Yves Van Goethem on Mastodon">Mastodon</a>
-        <a href="https://www.linkedin.com/in/yvg/" title="Yves Van Goethem on LinkedIn">LinkedIn</a>
+        <a href="/blog/rss.xml">RSS</a>
+        <a href="https://indieweb.social/@yvg">Mastodon</a>
+        <a href="https://github.com/yvg">GitHub</a>
+        <a href="https://www.linkedin.com/in/yvg/">LinkedIn</a>
       </p>
       <p>Yves Van Goethem, all rights reserved.</p>
       <p>No cookies 🖤</p>

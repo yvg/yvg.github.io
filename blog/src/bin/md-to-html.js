@@ -44,43 +44,43 @@ function writeMdFilesToHtml() {
   });
 }
 
-function getArticlesAssignedByYear() {
-  const articlesByYear = new Map();
+const monthAbbreviations = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-  mdFiles.forEach((file) => {
-    const mdContent = readFileSync(`${inputFolder}/${file}`, 'utf8');
-    const { date, title } = retrieveFrontmatterAttributes(mdContent);
-    const year = new Date(date).getFullYear();
+// UTC: frontmatter dates are bare YYYY-MM-DD, parsed as UTC midnight.
+function formatDate(date) {
+  const day = String(date.getUTCDate()).padStart(2, '0');
+  return `${monthAbbreviations[date.getUTCMonth()]}. ${day}, ${date.getUTCFullYear()}`;
+}
 
-    if (!articlesByYear.has(year)) {
-      articlesByYear.set(year, []);
-    }
+// Newest first. Shared by the index and the feed.
+function getArticlesNewestFirst() {
+  return mdFiles
+    .map((file) => {
+      const mdContent = readFileSync(`${inputFolder}/${file}`, 'utf8');
+      const { date, title } = retrieveFrontmatterAttributes(mdContent);
 
-    articlesByYear.get(year).push({
-      file: file,
-      title: title
-    });
-  });
-
-  return new Map([...articlesByYear.entries()]
-    .sort((a, b) => b[0].toString().localeCompare(a[0].toString(), undefined, { numeric: true }))
-    .filter(([year]) => !isNaN(Number(year))));
+      return {
+        htmlFile: file.replace('.md', '.html'),
+        title: title,
+        date: new Date(date)
+      };
+    })
+    .filter((article) => !Number.isNaN(article.date.getTime()))
+    .sort((a, b) => b.date - a.date);
 }
 
 function writeIndexHtml() {
-  const articlesAssignedByYear = getArticlesAssignedByYear()
-  let postLinks = ''
-  for (const [year, articles] of articlesAssignedByYear) {
-    postLinks += `<h3>${year}</h3><ul>`
-    articles.forEach((article) => {
-      const { file, title } = article
-      const htmlFile = file.replace('.md', '.html');
-      postLinks +=`<li><a href="${htmlFile}">${title}</a></li>`
-    })
-    postLinks +=`</ul>`
-  }
+  const postLinks = getArticlesNewestFirst()
+    .map(({ htmlFile, title, date }) =>
+      `<li>` +
+        `<time datetime="${date.toISOString().slice(0, 10)}">${formatDate(date)}</time>` +
+        `<a href="${htmlFile}">${title}</a>` +
+      `</li>`
+    )
+    .join('');
 
-  const indexHtml = readFileSync(`${partialsFolder}/${indexFileName}`, 'utf8').replace('${postLinks}', postLinks);
+  const indexHtml = readFileSync(`${partialsFolder}/${indexFileName}`, 'utf8')
+    .replace('${postLinks}', `<ul class="archive">${postLinks}</ul>`);
 
   console.log(`Writing ${indexFileName}…`)
   writeFileSync(`${outputFolder}/${indexFileName}`, indexHtml);
@@ -100,15 +100,12 @@ function writeRssFeed() {
     author: author,
   });
 
-  mdFiles.forEach((file) => {
-    const mdContent = readFileSync(`${inputFolder}/${file}`, 'utf8');
-    const { title, date } = retrieveFrontmatterAttributes(mdContent);
-    const htmlFile = file.replace('.md', '.html');
+  getArticlesNewestFirst().forEach(({ htmlFile, title, date }) => {
     feed.addItem({
       title,
       id: `${rssBaseUrl}/${htmlFile}`,
       link: `${rssBaseUrl}/${htmlFile}`,
-      date: new Date(date),
+      date: date,
       author: [author],
     })
   })

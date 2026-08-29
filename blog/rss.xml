@@ -4,16 +4,10 @@
         <title>Yves Van Goethem's blog</title>
         <link>https://yves.vg/blog</link>
         <description>undefined</description>
-        <lastBuildDate>Sun, 25 Jan 2026 13:25:37 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 29 Aug 2026 11:02:31 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
-        <item>
-            <title><![CDATA[2 seconds build time with ESbuild]]></title>
-            <link>https://yves.vg/blog/2-seconds-build-time-with-esbuild.html</link>
-            <guid>https://yves.vg/blog/2-seconds-build-time-with-esbuild.html</guid>
-            <pubDate>Mon, 17 Jan 2022 00:00:00 GMT</pubDate>
-        </item>
         <item>
             <title><![CDATA[AI: Productivity Multiplier, Dysfunction Amplifier]]></title>
             <link>https://yves.vg/blog/ai_productivity_multiplier_dysfunction_amplifier.html</link>
@@ -27,6 +21,18 @@
             <pubDate>Wed, 12 Mar 2025 00:00:00 GMT</pubDate>
         </item>
         <item>
+            <title><![CDATA[Stop Human Approval in Pull Requests: A case for better collaboration]]></title>
+            <link>https://yves.vg/blog/stop-human-approval-in-pull-requests-for-better-collaboration.html</link>
+            <guid>https://yves.vg/blog/stop-human-approval-in-pull-requests-for-better-collaboration.html</guid>
+            <pubDate>Mon, 12 Feb 2024 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[2 seconds build time with ESbuild]]></title>
+            <link>https://yves.vg/blog/2-seconds-build-time-with-esbuild.html</link>
+            <guid>https://yves.vg/blog/2-seconds-build-time-with-esbuild.html</guid>
+            <pubDate>Mon, 17 Jan 2022 00:00:00 GMT</pubDate>
+        </item>
+        <item>
             <title><![CDATA[Hello Tech Time, Goodbye Tech Debt]]></title>
             <link>https://yves.vg/blog/hello-tech-time-good-bye-tech-debt.html</link>
             <guid>https://yves.vg/blog/hello-tech-time-good-bye-tech-debt.html</guid>
@@ -37,12 +43,6 @@
             <link>https://yves.vg/blog/separation-of-concerns-in-react-apps.html</link>
             <guid>https://yves.vg/blog/separation-of-concerns-in-react-apps.html</guid>
             <pubDate>Tue, 16 Mar 2021 00:00:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Stop Human Approval in Pull Requests: A case for better collaboration]]></title>
-            <link>https://yves.vg/blog/stop-human-approval-in-pull-requests-for-better-collaboration.html</link>
-            <guid>https://yves.vg/blog/stop-human-approval-in-pull-requests-for-better-collaboration.html</guid>
-            <pubDate>Mon, 12 Feb 2024 00:00:00 GMT</pubDate>
         </item>
     </channel>
 </rss>
