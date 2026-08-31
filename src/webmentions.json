@@ -1,0 +1,287 @@
+{
+  "/blog/2-seconds-build-time-with-esbuild.html": {
+    "replies": [
+      {
+        "id": 1917638,
+        "name": "Yves Van Goethem :firefox:",
+        "profile": "https://indieweb.social/@yvg",
+        "avatar": "/assets/avatars/2c22b564d0d93249.jpg",
+        "url": "https://indieweb.social/@yvg/114659220751309232",
+        "published": "2025-06-10",
+        "text": "@GoOz @nhoizey J'avais hérité d'un monstre webpack qui servait à keud chez ToolTime, et ça m'as pris 1 jour d'avoir un protoype qui fonctionnait avec esbuild (sans jamais avoir essayé esbuild avant).\n\nAu risque d'encore me répéter : https://yves.vg/blog/2-seconds-build-time-with-esbuild.html ????\n\n#youcandoit\nyoucandoit\n\n2 seconds build time with ESbuild"
+      }
+    ],
+    "applause": [
+      {
+        "name": "Nicolas Hoizey",
+        "profile": "https://mamot.fr/@nhoizey",
+        "avatar": "/assets/avatars/32b234b9bdbc093c.jpg"
+      }
+    ]
+  },
+  "/blog/ai_productivity_multiplier_dysfunction_amplifier.html": {
+    "replies": [
+      {
+        "id": 1971018,
+        "name": "gokayburuc",
+        "profile": "https://mastodon.social/@gokayburuc",
+        "avatar": "/assets/avatars/d0f56a99b5bb9292.jpg",
+        "url": "https://mastodon.social/@gokayburuc/115966294026093918",
+        "published": "2026-01-27",
+        "text": "@yvg AI always selects samples at the peak of the normal distribution curve.If your sample is either at the forward or backward point in the distribution, it will not present this as the optimum solution. In other words, artificial intelligence can sometimes overlook very good examples, and sometimes it can offer overly complex solutions for very simple ones.At this point, programmers who are familiar with the systems and know what each code does have a bigger role to play."
+      }
+    ],
+    "applause": [
+      {
+        "name": "Dr. Professor Fred Rococo",
+        "profile": "https://sfba.social/@morgan",
+        "avatar": "/assets/avatars/5bc32bbd7519c600.jpg"
+      },
+      {
+        "name": "Dave Brotherstone",
+        "profile": "https://hachyderm.io/@bruderstein",
+        "avatar": "/assets/avatars/3e008bc6fd623f30.jpg"
+      },
+      {
+        "name": "David Napoli",
+        "profile": "https://datavis.social/@DavidNapoli",
+        "avatar": "/assets/avatars/b47b5b1871bb5365.jpg"
+      },
+      {
+        "name": "Marek Fořt",
+        "profile": "https://mastodon.online/@marekfort",
+        "avatar": "/assets/avatars/7e3a2fddf56986ab.jpg"
+      },
+      {
+        "name": "Programming Channel",
+        "profile": "https://newsmast.community/@programming",
+        "avatar": "/assets/avatars/c9b185222e08ae2b.jpg"
+      },
+      {
+        "name": "Engineering Channel",
+        "profile": "https://newsmast.community/@engineering",
+        "avatar": "/assets/avatars/74574f89df40fd62.jpg"
+      }
+    ]
+  },
+  "/blog/autonomy-through-frequent-alignment.html": {
+    "replies": [
+      {
+        "id": 1892551,
+        "name": "gryzzly",
+        "profile": "https://mastodon.social/@gryzzly",
+        "avatar": "/assets/avatars/bbc91a3dbb406f38.jpg",
+        "url": "https://mastodon.social/@gryzzly/114152211361285663",
+        "published": "2025-03-13",
+        "text": "@yvg I think this is a very nice approach to think about the collaboration process. It can apply to various settings and cross team / cross reporting level too."
+      },
+      {
+        "id": 1896223,
+        "name": "bassistance",
+        "profile": "https://chaos.social/@bassistance",
+        "avatar": "/assets/avatars/2e3208afbdd91f45.jpg",
+        "url": "https://chaos.social/@bassistance/114195260482993287",
+        "published": "2025-03-20",
+        "text": "@yvg this \"letting the first available engineer dictate the direction without discussion\" resonates a lot with me! I've observed that often. It benefits a lot from the sunk cost fallacy. \n\nWe recently revived our ADR process, which helps sometimes."
+      }
+    ],
+    "applause": [
+      {
+        "name": "gryzzly",
+        "profile": "https://mastodon.social/@gryzzly",
+        "avatar": "/assets/avatars/bbc91a3dbb406f38.jpg"
+      },
+      {
+        "name": "Vincent Garrigues",
+        "profile": "https://hachyderm.io/@garriguv",
+        "avatar": "/assets/avatars/1ce40f902dfe34ce.jpg"
+      },
+      {
+        "name": "arkhi",
+        "profile": "https://mamot.fr/@arkhi",
+        "avatar": "/assets/avatars/24158074b29bb5e0.jpg"
+      },
+      {
+        "name": "Xavier B.",
+        "profile": "https://boitam.eu/@xibe",
+        "avatar": "/assets/avatars/2b68f030f8404b1e.jpg"
+      },
+      {
+        "name": "Yves Van Goethem :firefox:",
+        "profile": "https://indieweb.social/@yvg",
+        "avatar": "/assets/avatars/2c22b564d0d93249.jpg"
+      }
+    ]
+  },
+  "/blog/stop-human-approval-in-pull-requests-for-better-collaboration.html": {
+    "replies": [
+      {
+        "id": 1782767,
+        "name": "Márton Salomváry",
+        "profile": "https://mastodon.berlin/@mrc",
+        "avatar": "/assets/avatars/e12606692f7002c4.jpg",
+        "url": "https://mastodon.berlin/@mrc/111924231606489537",
+        "published": "2024-02-13",
+        "text": "@yvg First reaction was: \"But, but, but juniors..!\""
+      },
+      {
+        "id": 1782768,
+        "name": "Yves Van Goethem :firefox:",
+        "profile": "https://indieweb.social/@yvg",
+        "avatar": "/assets/avatars/2c22b564d0d93249.jpg",
+        "url": "https://indieweb.social/@yvg/111924414221081006",
+        "published": "2024-02-13",
+        "text": "@mrc Yeah, that's a typical reaction. It just proves the article ???? The existing way of \"learning/teaching\" is ingrained and will be defended and should remain gate-keeping… which is obviously far away from more collaborative approaches like pair-programming, learning sessions, technical forums.\n\nIt is a massive mind-shift, and most people are not willing to change habits, it's simply human nature. But it's worth the effort ????"
+      },
+      {
+        "id": 1782769,
+        "name": "Márton Salomváry",
+        "profile": "https://mastodon.berlin/@mrc",
+        "avatar": "/assets/avatars/e12606692f7002c4.jpg",
+        "url": "https://mastodon.berlin/@mrc/111923733047304450",
+        "published": "2024-02-13",
+        "text": "@yvg All right, bomb dropped, let's see what the team reacts. #TrunkBasedDevelopment\ntrunkbaseddevelopment"
+      },
+      {
+        "id": 1782785,
+        "name": "Márton Salomváry",
+        "profile": "https://mastodon.berlin/@mrc",
+        "avatar": "/assets/avatars/e12606692f7002c4.jpg",
+        "url": "https://mastodon.berlin/@mrc/111923632930578259",
+        "published": "2024-02-13",
+        "text": "@yvg Speaking of merge conflicts, that's an important side-effect of PRs you might want to mention in your post. The longer a merge is delayed, the more and bigger the merge conflicts will be.\n\nAnd, partially as a result of the above, collaborators will end up creating bigger PRs, that should have been small, separate, individually shipped changes."
+      },
+      {
+        "id": 1782786,
+        "name": "Yves Van Goethem :firefox:",
+        "profile": "https://indieweb.social/@yvg",
+        "avatar": "/assets/avatars/2c22b564d0d93249.jpg",
+        "url": "https://indieweb.social/@yvg/111924159040291047",
+        "published": "2024-02-13",
+        "text": "@mrc Super interested in the reactions :D Would be happy to get an anonymized summary of your exchanges when you feel like you're concluding the topic :)"
+      },
+      {
+        "id": 1782787,
+        "name": "Márton Salomváry",
+        "profile": "https://mastodon.berlin/@mrc",
+        "avatar": "/assets/avatars/e12606692f7002c4.jpg",
+        "url": "https://mastodon.berlin/@mrc/111923620058859041",
+        "published": "2024-02-13",
+        "text": "@yvg Perfect timing, need exactly this on a project I recently joined. \n\nThey practice the classic PR review ceremony. I the past few weeks since I've been collaborating, it has prevented zero bugs and facilitated zero meaningful conversations.\n\nMeanwhile it delayed delivery by a day on the average and created 5-10% time overhead by creating merge conflicts.\n\nGreat write-up, thanks! Will drop this bomb on this team soon :D Long live Trunk Based Development!"
+      },
+      {
+        "id": 1782788,
+        "name": "Yves Van Goethem :firefox:",
+        "profile": "https://indieweb.social/@yvg",
+        "avatar": "/assets/avatars/2c22b564d0d93249.jpg",
+        "url": "https://indieweb.social/@yvg/111923644619766147",
+        "published": "2024-02-13",
+        "text": "@mrc Agree, for the sake of reading length I mostly focused on one aspect of PRs, there is a lot more to say, be it merges, long lived PRs, CI, costs, etc."
+      },
+      {
+        "id": 1782789,
+        "name": "Yves Van Goethem :firefox:",
+        "profile": "https://indieweb.social/@yvg",
+        "avatar": "/assets/avatars/2c22b564d0d93249.jpg",
+        "url": "https://indieweb.social/@yvg/111923633925772685",
+        "published": "2024-02-13",
+        "text": "@mrc Yep, TBD is a nice goal, short scoped PRs without human approval is already a great improvement ;b\nWhat helps is to track metrics, I wanted to add it to the article but it was difficult to extract meaningful data from a historical db to make public without organisational context and data points, soooo I abandoned."
+      },
+      {
+        "id": 1782790,
+        "name": "Ronan Limon Duparcmeur",
+        "profile": "https://ruby.social/@r3trofitted",
+        "avatar": "/assets/avatars/0fa3cb43dc7d9e3c.jpg",
+        "url": "https://ruby.social/@r3trofitted/111924082829952898",
+        "published": "2024-02-13",
+        "text": "@yvg @HTeuMeuLeu \n\n“It's also a waterfall principle right in the middle of the process.”\n\n????spot on"
+      },
+      {
+        "id": 1879602,
+        "name": "Matthieu",
+        "profile": "https://magentix.space/users/magentix",
+        "avatar": "/assets/avatars/e9b1b02d4ae4cee8.jpg",
+        "url": "https://magentix.space/objects/fbaf8e28-24a4-43d3-ab2b-47ad8f608467",
+        "published": "2025-01-24",
+        "text": "@nhoizey @yvg I quite agree, it's very inspiring."
+      }
+    ],
+    "applause": [
+      {
+        "name": "Sunday",
+        "profile": "https://toot.monny.cloud/@sunday",
+        "avatar": "/assets/avatars/545ac82a6d0e22ab.jpg"
+      },
+      {
+        "name": "marvinlockwood",
+        "profile": "https://mastodon.social/@marvinlockwood",
+        "avatar": "/assets/avatars/c71d46f2754d4b21.jpg"
+      },
+      {
+        "name": "Zed",
+        "profile": "https://mamot.fr/@ztec",
+        "avatar": "/assets/avatars/2a7cb3383c00e09f.jpg"
+      },
+      {
+        "name": "Joachim",
+        "profile": "https://boitam.eu/@joachim",
+        "avatar": "/assets/avatars/fed58bc20819adc4.jpg"
+      },
+      {
+        "name": "Márton Salomváry",
+        "profile": "https://mastodon.berlin/@mrc",
+        "avatar": "/assets/avatars/e12606692f7002c4.jpg"
+      },
+      {
+        "name": "kravinsky@mastodon.social",
+        "profile": "https://mastodon.social/@kravinsky",
+        "avatar": "/assets/avatars/b4dc95042e657148.jpg"
+      },
+      {
+        "name": "Jan",
+        "profile": "https://mastodon.hidupmanis.studio/@jmalonzo",
+        "avatar": "/assets/avatars/ce13187d2e864ee3.jpg"
+      },
+      {
+        "name": "Yves Van Goethem :firefox:",
+        "profile": "https://indieweb.social/@yvg",
+        "avatar": "/assets/avatars/2c22b564d0d93249.jpg"
+      },
+      {
+        "name": "Renaud Pradenc",
+        "profile": "https://hachyderm.io/@renaudpradenc",
+        "avatar": "/assets/avatars/2a93c818f3610d96.jpg"
+      },
+      {
+        "name": "Carlos Molina A",
+        "profile": "https://techhub.social/@cmolina",
+        "avatar": "/assets/avatars/a358919de5dd76a2.jpg"
+      },
+      {
+        "name": "domm",
+        "profile": "https://social.linux.pizza/@domm",
+        "avatar": "/assets/avatars/e1e0590cec242d6a.jpg"
+      },
+      {
+        "name": "Rob Whittaker :thoughtbot:",
+        "profile": "https://ruby.social/@purinkle",
+        "avatar": "/assets/avatars/2f885f781401af81.jpg"
+      },
+      {
+        "name": "Ronan Limon Duparcmeur",
+        "profile": "https://ruby.social/@r3trofitted",
+        "avatar": "/assets/avatars/0fa3cb43dc7d9e3c.jpg"
+      },
+      {
+        "name": "HTeuMeuLeu",
+        "profile": "https://mastodon.social/@HTeuMeuLeu",
+        "avatar": "/assets/avatars/24ba6197785fd204.jpg"
+      },
+      {
+        "name": "Yannick Croissant",
+        "profile": "https://mastodon.social/@yannickcr",
+        "avatar": "/assets/avatars/b7e58fa3bfa819c7.jpg"
+      }
+    ]
+  }
+}

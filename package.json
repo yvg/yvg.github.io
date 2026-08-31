@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "build": "node src/bin/build.js"
+    "build": "node src/bin/build.js",
+    "webmentions": "node src/bin/fetch-webmentions.js"
   },
   "dependencies": {
     "feed": "4.2.2",

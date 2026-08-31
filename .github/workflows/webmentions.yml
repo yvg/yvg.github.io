@@ -1,0 +1,47 @@
+name: Refresh webmentions
+
+# Daily is plenty. Nobody refreshes a post two minutes after replying to see
+# whether their comment appeared. Run it by hand from the Actions tab when
+# you want it sooner.
+on:
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.11.0"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Fetch webmentions and mirror avatars
+        run: npm run webmentions
+
+      - name: Build the site
+        run: npm run build
+
+      # A quiet day produces byte-identical files, so this commits nothing.
+      - name: Commit and push if anything changed
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add -A
+          git diff --staged --quiet && echo "no new mentions" && exit 0
+          git commit -m "webmentions: refresh"
+          git push

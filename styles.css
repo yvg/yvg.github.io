@@ -342,6 +342,114 @@ main > p:first-child {
   margin-bottom: 28px;
 }
 
+/* --- responses ---
+   Replies from Mastodon, arriving through Bridgy and webmention.io and baked
+   in at build time. Avatars are mirrored locally, never hotlinked. */
+
+/* Other people's words, and they should not read like the article. Two signals
+   the site already uses: sans rather than the reading serif, and the left rule
+   from blockquote. The size is fixed at every breakpoint on purpose, so the
+   conversation stays conversation-sized while the article grows to 26px. */
+.responses .replies { list-style: none; margin-left: 0; }
+.responses .replies li + li { margin-top: 28px; }
+
+.responses .replies li {
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 28px;
+  border-left: 3px solid var(--rule);
+  padding-left: 20px;
+  hyphens: none;
+}
+
+.responses .who {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  line-height: 28px;
+}
+
+/* 28px keeps the byline's line box at exactly one unit. */
+.responses .who img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--rule);
+  flex: none;
+}
+
+/* The avatar sits inside the profile link, so the whole byline is one target.
+   The underline goes on the span, not the anchor, or it would be drawn across
+   the image too. */
+.responses .by {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.responses .by:hover span { text-decoration: underline; text-underline-offset: 3px; }
+.responses .by:hover img { outline: 2px solid var(--link); outline-offset: 2px; }
+
+/* Permalink to the reply on the author's own instance. Underlined on hover,
+   since an undecorated link is the one thing this site never does. */
+.responses .when {
+  margin-left: auto;
+  color: var(--muted);
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.responses .when:hover { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+
+/* The reply sits tight under its byline, one unit, not two. pre-line keeps the
+   author's own line breaks, which HTML would otherwise collapse into spaces.
+   Hyphenation is off: it is set for the reading measure, and these lines are
+   shorter, sans, and full of handles that should not be broken. */
+.responses .replies p + p {
+  margin-top: 0;
+  white-space: pre-line;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+/* Faces are 1u tall and the row gap is 1u, so any number of wrapped rows is a
+   whole number of units. 32px faces cannot do that. margin-top is left to the
+   `main ul` rule so it tracks the unit at each breakpoint. */
+.responses .faces {
+  list-style: none;
+  margin-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px 8px;
+}
+
+.responses .faces li { margin: 0; }
+.responses .faces a { display: block; line-height: 0; }
+
+.responses .faces img,
+.responses .faces .initial {
+  display: block;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--rule);
+}
+
+.responses .faces .initial {
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 28px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.responses .faces a:hover img,
+.responses .faces a:hover .initial { outline: 2px solid var(--link); outline-offset: 2px; }
+
 /* ------------------------------------------------------- homepage ------ */
 
 /* Square, 4 units tall at every breakpoint, so the text below stays on grid.
@@ -423,7 +531,8 @@ main > p:first-child {
     hyphens: manual;
   }
 
-  main blockquote { padding-left: 24px; }
+  main blockquote,
+  .responses .replies li { padding-left: 24px; }
   main hr { margin: 31px 0 32px; }
   main pre { margin-top: 32px; padding: 16px; }
   p.info { padding: 16px; font-size: 16px; line-height: 24px; }

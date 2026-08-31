@@ -3,13 +3,20 @@ const markedSequentialHooks = require('marked-sequential-hooks');
 const markedHookFrontmatter = require('marked-hook-frontmatter');
 const frontmatter = require('front-matter');
 const { Feed } = require('feed');
-const { readdirSync, readFileSync, writeFileSync } = require('fs');
+const { existsSync, readdirSync, readFileSync, writeFileSync } = require('fs');
 
 const mdFolder = './src/md';
 const pagesFolder = './src/pages';
 const partialsFolder = './src/partials';
 const blogFolder = './blog';
 const mdFiles = readdirSync(mdFolder).filter((file) => file.endsWith('.md'));
+
+// Written by `npm run webmentions`, committed, and read here. The build never
+// touches the network, so it works offline and stays deterministic.
+const webmentionsFile = './src/webmentions.json';
+const webmentions = existsSync(webmentionsFile)
+  ? JSON.parse(readFileSync(webmentionsFile, 'utf8'))
+  : {};
 const blogTitle = `Yves Van Goethem's blog`;
 const siteUrl = 'https://yves.vg';
 const rssBaseUrl = `${siteUrl}/blog`;
@@ -47,6 +54,9 @@ function renderNav(current) {
 // title can never close the JSON-LD script element early.
 const escapeAttribute = (value) =>
   String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+
+const escapeText = (value) =>
+  String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 // Canonical URL, sharing card, and optional schema.org data. Everything here is
 // derived from frontmatter, so a post carries its own metadata.
@@ -103,6 +113,58 @@ function retrieveFrontmatterAttributes(mdContent) {
   return attributes
 }
 
+// Replies arrive from Mastodon through Bridgy and webmention.io, fetched by
+// the daily workflow into a committed JSON file. Avatars are mirrored into
+// /assets by that same script, never hotlinked.
+function renderResponses(path) {
+  const found = webmentions[path];
+  if (!found) return '';
+
+  const lines = ['', '      <section class="responses">'];
+
+  // Faces first. They are the quickest read, and on a post that got boosted
+  // more than it got answered they are most of what happened.
+  if (found.applause.length) {
+    lines.push('        <h2>Likes &amp; boosts</h2>', '        <ul class="faces">');
+    found.applause.forEach((fan) => {
+      const name = escapeAttribute(fan.name);
+      const face = fan.avatar
+        ? `<img src="${fan.avatar}" alt="${name}" width="28" height="28" loading="lazy">`
+        : `<span class="initial" aria-hidden="true">${escapeText(fan.name.trim().charAt(0) || '?')}</span>`;
+      lines.push(
+        `          <li><a href="${escapeAttribute(fan.profile)}" rel="nofollow ugc" title="${name}">${face}</a></li>`
+      );
+    });
+    lines.push('        </ul>');
+  }
+
+  if (found.replies.length) {
+    lines.push('        <h2>Responses</h2>', '        <ol class="replies">');
+    found.replies.forEach((reply) => {
+      // Avatar lives inside the profile link, so the whole byline is one target.
+      // alt is empty because the name sits right there as the link's text.
+      const avatar = reply.avatar
+        ? `<img src="${reply.avatar}" alt="" width="28" height="28" loading="lazy">`
+        : '';
+
+      lines.push(
+        '          <li>',
+        `            <p class="who"><a class="by" href="${escapeAttribute(reply.profile)}" rel="nofollow ugc">${avatar}<span>${escapeText(reply.name)}</span></a> <a class="when" href="${escapeAttribute(reply.url)}" rel="nofollow ugc"><time datetime="${reply.published}">${formatDate(new Date(reply.published))}</time></a></p>`,
+        `            <p>${escapeText(reply.text)}</p>`,
+        '          </li>'
+      );
+    });
+    lines.push('        </ol>');
+  }
+
+  lines.push(
+    '        <p class="info">These come from Mastodon. Mention this page in a post and your reply shows up here within a day.</p>',
+    '      </section>'
+  );
+
+  return lines.join('\n');
+}
+
 function writeMdFilesToHtml() {
   mdFiles.forEach((file) => {
     const mdContent = readFileSync(`${mdFolder}/${file}`, 'utf8');
@@ -120,7 +182,7 @@ function writeMdFilesToHtml() {
       title: title,
       description: summary,
       current: 'blog',
-      main: `      ${body}`,
+      main: `      ${body}${renderResponses(path)}`,
       meta: renderMeta({
         ogType: 'article',
         title: title,
