@@ -1,6 +1,7 @@
 ---
 title: "Autonomy through frequent Alignment"
 date: 2025-03-12
+summary: "Teams can decide how to work if they align often on what matters."
 ---
 
 Mar. 12, 2025

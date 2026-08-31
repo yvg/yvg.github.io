@@ -3,8 +3,8 @@
     <channel>
         <title>Yves Van Goethem's blog</title>
         <link>https://yves.vg/blog</link>
-        <description>undefined</description>
-        <lastBuildDate>Mon, 31 Aug 2026 08:19:22 GMT</lastBuildDate>
+        <description>Occasional writing about software and teams.</description>
+        <lastBuildDate>Sun, 25 Jan 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
