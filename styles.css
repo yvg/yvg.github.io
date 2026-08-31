@@ -212,8 +212,17 @@ nav ul a {
   text-underline-offset: 3px;
 }
 
-nav ul a:hover,
-nav ul a[aria-current="page"] { color: var(--text); }
+nav ul a:hover { color: var(--text); }
+
+/* You are here: full ink and no underline, because on this site an underline
+   means you can go there. Still a real link and still focusable, so the tab
+   order is the same on every page. Hover previously looked identical to this,
+   which made the current item read as permanently hovered. */
+nav ul a[aria-current="page"] {
+  color: var(--text);
+  text-decoration: none;
+  cursor: default;
+}
 
 footer {
   font-family: var(--sans);
