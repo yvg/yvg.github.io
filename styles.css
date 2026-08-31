@@ -5,10 +5,24 @@
 
 @font-face {
   font-family: "EB Garamond";
-  src: url("/fonts/EBGaramond-VariableFont_wght.woff2") format("woff2-variations");
+  src: url("/fonts/EBGaramond-var-latin.woff2") format("woff2");
   font-weight: 400 800;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "EB Garamond";
+  src: url("/fonts/EBGaramond-var-latin-ext.woff2") format("woff2");
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @font-face {
@@ -153,13 +167,15 @@ main a {
   text-underline-offset: 2px;
 }
 
-/* 42 + 42 = 84 = 3u */
+/* Leading 2u + margin 1u, so any line count lands on the grid. The old 42px
+   leading only worked when the title happened to wrap to an odd number of
+   lines, and on a phone most of them wrap to two. */
 main h1 {
   font-size: 34px;
-  line-height: 42px;
+  line-height: 56px;
   font-weight: 600;
   letter-spacing: -0.011em;
-  margin-bottom: 42px;
+  margin-bottom: 28px;
 }
 
 main h2 { font-size: 26px; line-height: 28px; font-weight: 600; margin-top: 56px; }
@@ -283,6 +299,16 @@ main > p:first-child {
   color: var(--muted);
 }
 
+/* These titles are navigation, not prose links, so they get a real tap target
+   the way the nav does: 28 + 20 = 48px, cancelled by the margin so nothing
+   moves off the grid. No horizontal padding, the left edge has to stay put. */
+.archive a,
+.postlist a {
+  display: inline-block;
+  padding: 10px 0;
+  margin: -10px 0;
+}
+
 /* --- reading: tablet, 32px unit --- */
 
 @media (min-width: 600px) {
@@ -293,8 +319,8 @@ main > p:first-child {
     padding: 64px 0 32px;
   }
 
-  /* 56 + 40 = 96 = 3u */
-  main h1 { font-size: 44px; line-height: 56px; margin-bottom: 40px; }
+  /* leading 2u, margin 1u */
+  main h1 { font-size: 44px; line-height: 64px; margin-bottom: 32px; }
   main h2 { font-size: 34px; line-height: 64px; margin-top: 64px; }
   main h3 { font-size: 26px; line-height: 32px; margin-top: 32px; }
 
@@ -337,9 +363,12 @@ main > p:first-child {
   .archive time { flex: 0 0 128px; font-size: 15px; line-height: 32px; }
 }
 
-/* --- reading: desktop, 37px unit --- */
+/* --- reading: desktop, 37px unit ---
+   Height guard: a Pro Max or Plus iPhone in landscape is over 900px wide but
+   only ~430px tall, and 111px of top padding on that is a quarter of the
+   screen. Those fall back to the tablet tier, which fits them. */
 
-@media (min-width: 900px) {
+@media (min-width: 900px) and (min-height: 600px) {
   main {
     font-size: 26px;
     line-height: 37px;
@@ -347,7 +376,7 @@ main > p:first-child {
     padding: 111px 0 37px;
   }
 
-  /* 74 + 37 = 111 = 3u */
+  /* leading 2u, margin 1u */
   main h1 { font-size: 58px; line-height: 74px; margin-bottom: 37px; }
   main h2 { font-size: 45px; line-height: 74px; margin-top: 74px; }
   main h3 { font-size: 32px; line-height: 37px; margin-top: 37px; }
@@ -474,7 +503,7 @@ main > p:first-child {
   .cv address { font-size: 21px; }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 900px) and (min-height: 600px) {
   .cv main { padding: 84px 0 28px; }
 }
 
