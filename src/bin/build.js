@@ -42,12 +42,12 @@ const page = (name) => read(pagesFolder, name).replace(/\n$/, '');
 // string would let $&, $' and friends eat the surrounding text.
 const fill = (template, token, value) => template.replace('${' + token + '}', () => value);
 
-// One nav for the whole site. `current` is the path segment of the active item,
-// or null on the homepage, where the site title is already the current page.
+// One nav for the whole site. `current` is the active item's own href, which
+// lets the homepage be marked too now that it has an About link of its own.
 function renderNav(current) {
   const nav = partial('nav');
   if (!current) return nav;
-  return nav.replace(`href="/${current}/"`, `href="/${current}/" aria-current="page"`);
+  return nav.replace(`href="${current}"`, `href="${current}" aria-current="page"`);
 }
 
 // Only & and " actually break a double-quoted attribute; < is escaped so a
@@ -181,7 +181,7 @@ function writeMdFilesToHtml() {
     writeFileSync(`${blogFolder}/${outputFileName}`, renderPage({
       title: title,
       description: summary,
-      current: 'blog',
+      current: '/blog/',
       main: `      ${body}${renderResponses(path)}`,
       meta: renderMeta({
         ogType: 'article',
@@ -256,7 +256,7 @@ function writeStaticPages() {
       source: 'index',
       title: 'Yves Van Goethem',
       description: 'Yves Van Goethem, co-founder and CTO at fluado, living near Bielefeld, Germany. Occasional writing about software and teams.',
-      current: null,
+      current: '/',
       path: '/',
       ogType: 'website',
       jsonLd: {
@@ -277,7 +277,7 @@ function writeStaticPages() {
       title: `Yves Van Goethem's CV`,
       description: `Yves Van Goethem's CV. Twenty years building software and leading engineering teams: fluado, ToolTime, SoundCloud, Publicis, Digitas.`,
       htmlClass: 'cv',
-      current: 'cv',
+      current: '/cv/',
       path: '/cv/',
       ogType: 'website'
     }
@@ -310,7 +310,7 @@ function writeBlogIndexHtml() {
   writeFileSync(`${blogFolder}/index.html`, renderPage({
     title: blogTitle,
     description: rssDescription,
-    current: 'blog',
+    current: '/blog/',
     main: main,
     meta: renderMeta({
       ogType: 'website',
