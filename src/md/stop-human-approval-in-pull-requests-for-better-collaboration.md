@@ -1,6 +1,7 @@
 ---
 title: "Stop Human Approval in Pull Requests: A case for better collaboration"
 date: 2024-02-12
+summary: "Approval gates delay delivery and do not ensure quality."
 ---
 
 Feb. 12, 2024

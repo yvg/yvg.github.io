@@ -1,6 +1,7 @@
 ---
 title: "AI: Productivity Multiplier, Dysfunction Amplifier"
 date: 2026-01-25
+summary: "AI amplifies what your team already has, good or bad."
 ---
 
 Jan. 25, 2026
