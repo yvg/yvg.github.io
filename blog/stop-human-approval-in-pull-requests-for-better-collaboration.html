@@ -17,11 +17,25 @@
     <meta property="og:image" content="https://yves.vg/assets/yvg.jpg">
     <meta name="twitter:card" content="summary">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Stop Human Approval in Pull Requests: A case for better collaboration","datePublished":"2024-02-12","url":"https://yves.vg/blog/stop-human-approval-in-pull-requests-for-better-collaboration.html","author":{"@type":"Person","name":"Yves Van Goethem","url":"https://yves.vg/"},"description":"Approval gates delay delivery and do not ensure quality."}</script>
+    <script>
+      // Blocking on purpose: a saved choice has to land before the first
+      // paint, or the page flashes the other theme. No saved choice means no
+      // attribute, which leaves prefers-color-scheme in charge.
+      try {
+        var saved = localStorage.getItem("theme");
+        if (saved === "dark" || saved === "light") {
+          document.documentElement.dataset.theme = saved;
+        }
+      } catch (e) {}
+    </script>
   </head>
 
   <body>
     <nav>
-      <a class="site" href="/">Yves Van Goethem</a>
+      <div class="bar">
+        <a class="site" href="/">Yves Van Goethem</a>
+        <button type="button" class="theme" id="theme-toggle" hidden></button>
+      </div>
       <ul>
         <li><a href="/blog/" aria-current="page">Blog</a></li>
         <li><a href="/cv/">CV</a></li>
@@ -96,7 +110,48 @@ In the best case, people batch-review and dedicate time in their day to do so.</
         <a href="https://www.linkedin.com/in/yvg/">LinkedIn</a>
       </p>
       <p>Yves Van Goethem, all rights reserved.</p>
-      <p>No cookies 🖤</p>
+      <p class="cookies">No cookies</p>
     </footer>
+
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var toggle = document.getElementById("theme-toggle");
+        if (!toggle) return;
+
+        var system = window.matchMedia("(prefers-color-scheme: dark)");
+
+        var SUN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 1.8v2.6M12 19.6v2.6M4.8 4.8l1.9 1.9M17.3 17.3l1.9 1.9M1.8 12h2.6M19.6 12h2.6M4.8 19.2l1.9-1.9M17.3 6.7l1.9-1.9"/></svg>';
+        var MOON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1Z"/></svg>';
+
+        // No stored choice means the system decides, so read it from there.
+        function isDark() {
+          return root.dataset.theme ? root.dataset.theme === "dark" : system.matches;
+        }
+
+        function render() {
+          var dark = isDark();
+          var label = dark ? "Switch to the light theme" : "Switch to the dark theme";
+          toggle.innerHTML = dark ? SUN : MOON;
+          toggle.setAttribute("aria-label", label);
+          toggle.setAttribute("title", label);
+        }
+
+        toggle.addEventListener("click", function () {
+          var next = isDark() ? "light" : "dark";
+          root.dataset.theme = next;
+          try { localStorage.setItem("theme", next); } catch (e) {}
+          render();
+        });
+
+        // Follow the system while the reader has not overridden it.
+        system.addEventListener("change", function () {
+          if (!root.dataset.theme) render();
+        });
+
+        toggle.hidden = false;
+        render();
+      })();
+    </script>
   </body>
 </html>
