@@ -69,6 +69,60 @@ ${footer}
         toggle.hidden = false;
         render();
       })();
+
+      // The nav hides as you scroll down and comes back as soon as you scroll
+      // up. Marking it live is what switches the sticky styles on, so a page
+      // without JS keeps the plain nav at the top.
+      (function () {
+        var nav = document.querySelector("nav");
+        if (!nav) return;
+
+        // Movement smaller than this is trackpad jitter, not intent. The
+        // reference point only moves once it is exceeded, so a slow scroll
+        // still adds up instead of never hiding the bar.
+        var DELTA = 8;
+        var lastY = window.pageYOffset;
+        var navHeight = nav.offsetHeight;
+        var ticking = false;
+
+        function update() {
+          ticking = false;
+          var max = document.documentElement.scrollHeight - window.innerHeight;
+          // Clamp: overscroll at either end bounces back and would otherwise
+          // read as a scroll in the opposite direction.
+          var y = Math.max(0, Math.min(window.pageYOffset, max));
+
+          nav.classList.toggle("is-stuck", y > 0);
+
+          if (y <= 0) {
+            nav.classList.remove("is-hidden");
+          } else if (y > lastY + DELTA && y > navHeight) {
+            nav.classList.add("is-hidden");
+          } else if (y < lastY - DELTA) {
+            nav.classList.remove("is-hidden");
+          }
+
+          if (Math.abs(y - lastY) > DELTA) lastY = y;
+        }
+
+        window.addEventListener("scroll", function () {
+          if (ticking) return;
+          ticking = true;
+          window.requestAnimationFrame(update);
+        }, { passive: true });
+
+        window.addEventListener("resize", function () {
+          navHeight = nav.offsetHeight;
+        }, { passive: true });
+
+        // Tabbing into a hidden nav brings it back.
+        nav.addEventListener("focusin", function () {
+          nav.classList.remove("is-hidden");
+        });
+
+        nav.classList.add("is-live");
+        update();
+      })();
     </script>
   </body>
 </html>

@@ -155,6 +155,41 @@ nav {
   padding-top: 28px;
 }
 
+/* Shown on demand: scrolling down hides it, scrolling up brings it back.
+   The script marks the nav live and toggles the two states; without JS
+   none of this applies and the nav sits at the top of the page as before,
+   the same way the theme toggle stays hidden until the script runs.
+
+   Sticky, not fixed, so it stays in flow and nothing below it moves. The
+   hairline is a box-shadow, not a border: a border would add a pixel and
+   walk the page off the baseline, a shadow paints outside the box. z-index
+   because main comes later in the DOM and its positioned children would
+   otherwise paint over the bar. */
+nav.is-live {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--bg);
+  /* Air under the links so the bar is symmetric (28 above the name, 28
+     below the links) and the hairline is not on top of the text. The same
+     padding-and-overhang trick the nav links use: the negative margin gives
+     the height straight back, so main does not move and the grid holds. */
+  padding-bottom: 28px;
+  margin-bottom: -28px;
+  transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+}
+
+nav.is-stuck { box-shadow: 0 1px 0 var(--rule); }
+nav.is-hidden { transform: translateY(-100%); }
+
+@media (prefers-reduced-motion: reduce) {
+  nav.is-live { transition: none; }
+}
+
+/* The revealed bar is 112px (28 + name + links + 28). Anything jumped to
+   by id lands below it rather than under it. */
+main [id] { scroll-margin-top: 112px; }
+
 /* Same width as main, so the toggle lands on the reading column's right edge
    while the title stays centred. */
 nav .bar {
@@ -311,6 +346,73 @@ main blockquote {
 
 /* 27 + 1px rule + 28 = 56 = 2u */
 main hr { height: 1px; background: var(--rule); border: 0; margin: 27px 0 28px; }
+
+/* Tables. Auto layout so a column takes the width its content needs; the
+   wrapper below is what keeps a wide one from pushing the page sideways.
+   Cell padding is 0 at the row start so the first column stays flush with
+   the text column, like every other block.
+
+   A table has to read as data, not as prose that happens to align, and the
+   page already has a signal for "not reading matter": the sans. The dateline,
+   the info box and the responses all switch to it. So does this, at the
+   responses' 16/28. The header borrows the dateline's label voice (small
+   caps-ish uppercase, letter-spaced, muted) so it is a heading, not a bold
+   word. Rows alternate on --mark, the code tint, which gives the eye a
+   cadence at zero vertical cost.
+
+   Body rows carry NO borders: a 1px line under each row would add a pixel to
+   every row and walk the page off the baseline grid. Only the header has a
+   rule, and it pays for itself the way hr does — 27px below + 1px line = 1u. */
+main table {
+  margin-top: 28px;
+  border-collapse: collapse;
+  width: 100%;
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 28px;
+  text-align: left;
+  hyphens: none;
+}
+
+main th,
+main td {
+  padding: 0 24px 0 0;
+  vertical-align: baseline;
+}
+
+main thead th {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-left: 8px;
+  padding-bottom: 27px;
+  border-bottom: 1px solid var(--rule);
+}
+
+main tbody tr:first-child td { padding-top: 28px; }
+
+/* The stripe runs edge to edge of the row; the cells' own padding keeps the
+   text off it. First column is the row's label. */
+main tbody tr:nth-child(even) td { background: var(--mark); }
+
+main tbody td:first-child { color: var(--muted); }
+
+main tbody td { padding-left: 8px; }
+
+main th:last-child,
+main td:last-child { padding-right: 8px; }
+
+/* A table wider than the column scrolls inside itself rather than widening
+   the page. tabindex in the markup would make it keyboard-scrollable; without
+   it, the overflow still saves the layout. */
+main .table-scroll {
+  margin-top: 28px;
+  overflow-x: auto;
+}
+
+main .table-scroll > table { margin-top: 0; }
 
 main code {
   font-family: ui-monospace, "SF Mono", Menlo, monospace;
@@ -544,6 +646,12 @@ main > p:first-child {
   .responses .replies li { padding-left: 24px; }
   main hr { margin: 31px 0 32px; }
   main pre { margin-top: 32px; padding: 16px; }
+  main table,
+  main .table-scroll { margin-top: 32px; }
+  main table { font-size: 16px; line-height: 32px; }
+  main thead th { font-size: 13px; padding-bottom: 31px; }
+  main tbody tr:first-child td { padding-top: 32px; }
+  main .table-scroll > table { margin-top: 0; }
   p.info { padding: 16px; font-size: 16px; line-height: 24px; }
 
   main > p:first-child { font-size: 14px; line-height: 32px; margin-bottom: 32px; }
@@ -571,9 +679,16 @@ main > p:first-child {
 /* --- reading: desktop, 37px unit ---
    Height guard: a Pro Max or Plus iPhone in landscape is over 900px wide but
    only ~430px tall, and 111px of top padding on that is a quarter of the
-   screen. Those fall back to the tablet tier, which fits them. */
+   screen. Those fall back to the tablet tier, which fits them.
 
-@media (min-width: 900px) and (min-height: 600px) {
+   The guard is 500, not 600, because iOS grows the layout viewport when
+   Safari's toolbar collapses on scroll, and a media query on height flips
+   with it. An iPad mini in landscape sat just under 600 with the toolbar and
+   just over without, so the font jumped a tier mid-scroll. 500 is above
+   every landscape iPhone (~440 at most) in both toolbar states and below
+   every iPad in both, so nothing straddles it. */
+
+@media (min-width: 900px) and (min-height: 500px) {
   main {
     font-size: 26px;
     line-height: 37px;
@@ -594,6 +709,12 @@ main > p:first-child {
 
   main hr { margin: 36px 0 37px; }
   main pre { margin-top: 37px; padding: 18px 16px; }
+  main table,
+  main .table-scroll { margin-top: 37px; }
+  main table { font-size: 17px; line-height: 37px; }
+  main thead th { font-size: 14px; padding-bottom: 36px; }
+  main tbody tr:first-child td { padding-top: 37px; }
+  main .table-scroll > table { margin-top: 0; }
   p.info { padding: 18px 16px; font-size: 17px; line-height: 26px; }
 
   main > p:first-child { line-height: 37px; margin-bottom: 37px; }
@@ -708,7 +829,7 @@ main > p:first-child {
   .cv address { font-size: 21px; }
 }
 
-@media (min-width: 900px) and (min-height: 600px) {
+@media (min-width: 900px) and (min-height: 500px) {
   .cv main { padding: 84px 0 28px; }
 }
 
