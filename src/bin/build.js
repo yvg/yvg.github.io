@@ -44,10 +44,15 @@ const fill = (template, token, value) => template.replace('${' + token + '}', ()
 
 // One nav for the whole site. `current` is the active item's own href, which
 // lets the homepage be marked too now that it has an About link of its own.
-function renderNav(current) {
+// `section` marks the item as the section this page sits in rather than the
+// page itself: an article is inside /blog/, it is not /blog/. The two get
+// different aria-current values, and the stylesheet keeps the section one
+// looking like the link it still is.
+function renderNav(current, section) {
   const nav = partial('nav');
   if (!current) return nav;
-  return nav.replace(`href="${current}"`, `href="${current}" aria-current="page"`);
+  const state = section ? 'true' : 'page';
+  return nav.replace(`href="${current}"`, `href="${current}" aria-current="${state}"`);
 }
 
 // Only & and " actually break a double-quoted attribute; < is escaped so a
@@ -87,13 +92,13 @@ function renderMeta({ ogType, title, description, path, jsonLd }) {
 }
 
 // description, htmlClass and meta are optional and leave no trace when absent.
-function renderPage({ title, description, htmlClass, current, main, meta }) {
+function renderPage({ title, description, htmlClass, current, section, main, meta }) {
   let html = shell();
   html = fill(html, 'htmlClass', htmlClass ? ` class="${htmlClass}"` : '');
   html = fill(html, 'title', title);
   html = fill(html, 'description', description ? `\n    <meta name="description" content="${escapeAttribute(description)}">` : '');
   html = fill(html, 'meta', meta || '');
-  html = fill(html, 'nav', renderNav(current));
+  html = fill(html, 'nav', renderNav(current, section));
   html = fill(html, 'main', main);
   html = fill(html, 'footer', partial('footer'));
   return html;
@@ -182,6 +187,7 @@ function writeMdFilesToHtml() {
       title: title,
       description: summary,
       current: '/blog/',
+      section: true,
       main: `      ${body}${renderResponses(path)}`,
       meta: renderMeta({
         ogType: 'article',

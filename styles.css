@@ -259,6 +259,13 @@ nav ul a[aria-current="page"] {
   cursor: default;
 }
 
+/* You are in here: an article sits inside /blog/, it is not /blog/, so the
+   item stays a link (underline kept, still somewhere you can go) and marks
+   itself with a heavier line. Weight of the line, not the ink: hover changes
+   the ink, so the two never read as the same state. Thickness costs no
+   layout, so nothing shifts between pages. */
+nav ul a[aria-current="true"] { text-decoration-thickness: 2px; }
+
 footer {
   font-family: var(--sans);
   text-align: center;
