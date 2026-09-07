@@ -259,12 +259,12 @@ nav ul a[aria-current="page"] {
   cursor: default;
 }
 
-/* You are in here: an article sits inside /blog/, it is not /blog/, so the
-   item stays a link (underline kept, still somewhere you can go) and marks
-   itself with a heavier line. Weight of the line, not the ink: hover changes
-   the ink, so the two never read as the same state. Thickness costs no
-   layout, so nothing shifts between pages. */
-nav ul a[aria-current="true"] { text-decoration-thickness: 2px; }
+/* An article sits inside /blog/, it is not /blog/, so it gets
+   aria-current="true" rather than "page" and deliberately NO rule here: the
+   whole point is that the item stays an ordinary link, since going back to
+   the list is the one thing a reader wants from the nav mid-article. A
+   heavier underline as a "you are here" marker was tried and read as a
+   defect; in a three-item nav the page itself already says where you are. */
 
 footer {
   font-family: var(--sans);
