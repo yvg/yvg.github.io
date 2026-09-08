@@ -106,12 +106,53 @@ function renderPage({ title, description, htmlClass, current, section, main, met
 
 // The hook only strips frontmatter. Wrapping happens where the filename and the
 // frontmatter are both in hand, so a post can build its own canonical URL.
+// A diagram is an SVG under /assets/diagrams, rendered once by hand and
+// committed, like the avatars. Referenced from markdown as a plain image, it
+// is inlined here so the page's colour tokens reach it (an <img> cannot see
+// them) and no script is needed to show it. The alt text becomes the
+// accessible name; the title becomes the caption. The expand button opens the
+// same drawing in a full-viewport dialog; without JS the button is hidden and
+// a wide drawing scrolls inside its figure.
+const diagramsFolder = './assets/diagrams';
+let diagramCount = 0;
+function renderDiagram(href, title, alt) {
+  const file = `${diagramsFolder}/${href.slice('/assets/diagrams/'.length)}`;
+  const id = `diagram-${++diagramCount}`;
+  const source = readFileSync(file, 'utf8');
+  // Natural width, so the dialog can show the drawing at the size it was
+  // laid out for while the figure fits it to the column.
+  const width = Math.ceil(parseFloat(source.match(/viewBox="[-\d.]+ [-\d.]+ ([-\d.]+)/)[1]));
+  const svg = source
+    .replace('<svg ', `<svg aria-labelledby="${id}-title" style="--diagram-width: ${width}px" `)
+    .replace(/(<svg [^>]*>)/, `$1<title id="${id}-title">${escapeAttribute(alt)}</title>`);
+  // Four corner arrows, the same stroke style as the theme toggle's icons.
+  // The button sits on the caption line, where the chrome is, not over the
+  // drawing, where it would read as part of it.
+  const icon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>';
+  const button = `<button type="button" class="diagram-expand" aria-expanded="false" hidden>${icon}<span>Expand</span></button>`;
+  return `<figure class="diagram" id="${id}">
+  <div class="diagram-canvas">${svg}</div>
+  <figcaption><span class="diagram-caption">${title || ''}</span>${button}</figcaption>
+</figure>`;
+}
+
 const marked = new Marked().use(
   markedSequentialHooks({
     markdownHooks: [markedHookFrontmatter({ dataPrefix: 'page' })],
     htmlHooks: [(html) => html]
   })
-)
+).use({
+  renderer: {
+    image(href, title, text) {
+      return href.startsWith('/assets/diagrams/') ? renderDiagram(href, title, text) : false;
+    },
+    // A figure is not phrasing content; a paragraph holding only one drops
+    // the wrapper.
+    paragraph(text) {
+      return text.startsWith('<figure') && text.endsWith('</figure>') ? `${text}\n` : false;
+    }
+  }
+})
 
 function retrieveFrontmatterAttributes(mdContent) {
   const { attributes } = frontmatter(mdContent);

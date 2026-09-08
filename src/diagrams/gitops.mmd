@@ -1,0 +1,31 @@
+flowchart TB
+    dev(["Developers and Renovate"])
+
+    subgraph forge["Forgejo: repos, CI, registry"]
+        direction TB
+        app["<b>app repos</b><br/>webapp, backend"]
+        platform["<b>platform repo</b><br/>how the boxes are laid out"]
+        secrets["<b>secret stores</b><br/>one per environment, encrypted"]
+        ci["<b>CI on push</b><br/>test, build, push the image,<br/>declare the new tag for<br/>staging and production together"]
+        versions["<b>versions repo</b><br/>which tag each environment runs<br/>written by CI only"]
+        registry[("<b>registry</b><br/>immutable sha-tagged images<br/>written by CI only")]
+        app --> ci
+        ci --> registry
+        ci --> versions
+    end
+
+    dev -- "commit" --> forge
+
+    subgraph box["Every box, once a minute"]
+        direction TB
+        compare{"<b>anything changed?</b><br/>versions, platform, secrets"}
+        converge["<b>converge</b><br/>secrets rendered to memory<br/>migrations first, then a rolling update"]
+        gate{"<b>healthy?</b>"}
+        applied["record as applied"]
+        again["keep the old version,<br/>retry next minute"]
+        compare -- "yes" --> converge --> gate
+        gate -- "yes" --> applied
+        gate -- "no" --> again
+    end
+
+    forge -. "pull, read-only" .-> box

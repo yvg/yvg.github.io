@@ -1,0 +1,25 @@
+flowchart TB
+    subgraph fleet["Every box"]
+        agents["<b>Vector + Beszel agent</b><br/>ship logs and metrics out<br/>no inbound ports"]
+    end
+
+    subgraph ops["Ops box"]
+        direction LR
+        logs[("<b>VictoriaLogs</b><br/>searchable, 7 days")]
+        metrics[("<b>Beszel</b><br/>CPU, memory, disk")]
+        probe["<b>Gatus</b><br/>checks every site every minute:<br/>does it answer, is the certificate valid"]
+    end
+
+    agents --> logs
+    agents --> metrics
+
+    subgraph automation["CI, Trivy, reconciler"]
+        jobs["<b>status messages</b><br/>what was just deployed<br/>which images have known vulnerabilities<br/>which box needs a reboot"]
+    end
+
+    chat["<b>Mattermost</b><br/>#monitoring"]
+    human(["a human"])
+
+    probe -- "alert" --> chat
+    jobs --> chat
+    chat --> human

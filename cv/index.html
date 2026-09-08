@@ -337,5 +337,54 @@
         update();
       })();
     </script>
+
+    <script>
+      // Diagrams: an Expand button per figure opens the same drawing in a
+      // full-viewport dialog. The browser's own pinch and ctrl-wheel zoom do
+      // the rest; nothing here touches scroll or gestures. Without JS the
+      // button stays hidden and the figure scrolls sideways on its own.
+      (function () {
+        var figures = document.querySelectorAll("figure.diagram");
+        if (!figures.length || typeof HTMLDialogElement === "undefined") return;
+
+        var dialog = document.createElement("dialog");
+        dialog.className = "diagram-dialog";
+        dialog.innerHTML =
+          '<div class="diagram-dialog-bar"><p class="diagram-dialog-title"></p>' +
+          '<button type="button" class="diagram-close">Close</button></div>' +
+          '<div class="diagram-dialog-canvas"></div>';
+        document.body.appendChild(dialog);
+
+        var title = dialog.querySelector(".diagram-dialog-title");
+        var canvas = dialog.querySelector(".diagram-dialog-canvas");
+        var opener = null;
+
+        function close() { dialog.close(); }
+        dialog.querySelector(".diagram-close").addEventListener("click", close);
+        // A click on the backdrop lands on the dialog element itself.
+        dialog.addEventListener("click", function (e) { if (e.target === dialog) close(); });
+        dialog.addEventListener("close", function () {
+          canvas.innerHTML = "";
+          if (opener) { opener.setAttribute("aria-expanded", "false"); opener.focus(); }
+        });
+
+        figures.forEach(function (figure) {
+          var button = figure.querySelector(".diagram-expand");
+          button.hidden = false;
+          button.addEventListener("click", function () {
+            var caption = figure.querySelector(".diagram-caption");
+            title.textContent = caption ? caption.textContent : "";
+            canvas.innerHTML = figure.querySelector(".diagram-canvas > svg").outerHTML;
+            opener = button;
+            button.setAttribute("aria-expanded", "true");
+            dialog.showModal();
+            // A drawing wider than the screen opens on its middle, where the
+            // top of a flowchart is, rather than on its left edge.
+            canvas.scrollLeft = (canvas.scrollWidth - canvas.clientWidth) / 2;
+            canvas.scrollTop = 0;
+          });
+        });
+      })();
+    </script>
   </body>
 </html>

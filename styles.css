@@ -421,6 +421,144 @@ main .table-scroll {
 
 main .table-scroll > table { margin-top: 0; }
 
+/* --- diagrams ---
+   An SVG inlined at build time, so it takes its colours from the tokens
+   above and follows the theme like the text does. At rest it is fitted to
+   the column; the Expand button (shown by the script) opens the same drawing
+   in a dialog the size of the viewport, where the browser's own zoom takes
+   over. The SVG's viewBox height is rounded to the grid by the render
+   script, so a figure shown at natural size hands the baseline back. */
+main figure.diagram { margin-top: 28px; }
+
+main .diagram-canvas { position: relative; overflow-x: auto; }
+main .diagram-canvas > svg { display: block; width: 100%; height: auto; }
+/* HTML labels inside the drawing: mermaid measured them in this face, at
+   this leading. Anything else here and boxes and text stop agreeing. */
+main .diagram-canvas .nodeLabel,
+main .diagram-canvas .edgeLabel,
+main .diagram-canvas .cluster-label {
+  font-family: var(--sans);
+  line-height: 1.25;
+}
+/* The article's paragraph rules would otherwise reach the label markup and
+   resize what mermaid already measured. text-wrap: pretty in particular
+   turns the labels' nowrap into wrap; inherit hands it back. */
+main .diagram-canvas :is(p, span, div) {
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  text-wrap: inherit;
+}
+
+/* Caption centred under the drawing, in the sans the rest of the chrome
+   uses, on the grid. Side padding keeps the text clear of the control. */
+main figure.diagram figcaption {
+  position: relative;
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 28px;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 0;
+  padding: 0 48px;
+  text-wrap: pretty;
+}
+
+/* The expand control: the theme toggle's idiom, a bare muted icon that
+   darkens on hover, flush right on the caption line with a 48px target
+   that overhangs the line the same way the toggle overhangs the nav. The
+   name is there for assistive tech. */
+main .diagram-expand {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+main .diagram-expand:hover,
+main .diagram-expand:focus-visible { color: var(--text); }
+main .diagram-expand svg { display: block; width: 18px; height: 18px; }
+main .diagram-expand span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.diagram-dialog {
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: var(--bg);
+  color: var(--text);
+  display: none;
+  flex-direction: column;
+}
+.diagram-dialog[open] { display: flex; }
+.diagram-dialog::backdrop { background: var(--bg); }
+
+.diagram-dialog-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 16px;
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 56px;
+  box-shadow: 0 1px 0 var(--rule);
+}
+.diagram-dialog-title { color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.diagram-close {
+  font: inherit;
+  color: var(--link);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  min-height: 48px;
+  padding: 0 4px;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+/* The drawing at its natural size, scrolling in both directions; the
+   browser's pinch and ctrl-wheel zoom apply on top. Centred when smaller
+   than the viewport, top-left anchored when larger, so it never disappears
+   off the leading edge. */
+.diagram-dialog-canvas {
+  flex: 1;
+  overflow: auto;
+  padding: 28px 16px;
+}
+/* Auto margins centre a drawing narrower than the viewport and stop at
+   zero for a wider one, which keeps its top-left corner reachable. */
+.diagram-dialog-canvas > svg {
+  display: block;
+  margin: 0 auto;
+  width: max(100%, var(--diagram-width, 100%));
+  max-width: none;
+  height: auto;
+}
+.diagram-dialog-canvas .nodeLabel,
+.diagram-dialog-canvas .edgeLabel,
+.diagram-dialog-canvas .cluster-label { font-family: var(--sans); line-height: 1.25; }
+.diagram-dialog-canvas .nodeLabel p { margin: 0; }
+
 main code {
   font-family: ui-monospace, "SF Mono", Menlo, monospace;
   font-size: 0.8em;
@@ -655,6 +793,8 @@ main > p:first-child {
   main pre { margin-top: 32px; padding: 16px; }
   main table,
   main .table-scroll { margin-top: 32px; }
+  main figure.diagram { margin-top: 32px; }
+  main figure.diagram figcaption { font-size: 16px; line-height: 32px; }
   main table { font-size: 16px; line-height: 32px; }
   main thead th { font-size: 13px; padding-bottom: 31px; }
   main tbody tr:first-child td { padding-top: 32px; }
@@ -718,6 +858,8 @@ main > p:first-child {
   main pre { margin-top: 37px; padding: 18px 16px; }
   main table,
   main .table-scroll { margin-top: 37px; }
+  main figure.diagram { margin-top: 37px; }
+  main figure.diagram figcaption { font-size: 17px; line-height: 37px; }
   main table { font-size: 17px; line-height: 37px; }
   main thead th { font-size: 14px; padding-bottom: 36px; }
   main tbody tr:first-child td { padding-top: 37px; }
@@ -893,7 +1035,7 @@ main > p:first-child {
     --bg: #fff; --text: #000; --muted: #3a3a3a; --link: #000; --rule: #bbb;
     --smoothing: auto; --smoothing-moz: auto;
   }
-  nav, footer { display: none; }
+  nav, footer, .diagram-expand { display: none; }
   main { width: 100%; max-width: none; padding: 0; font-size: 10pt; line-height: 15pt; }
   .cv main > p, .cv address { font-size: 11pt; line-height: 15pt; }
   .cv main h2 { font-size: 13pt; line-height: 15pt; margin: 24pt 0 12pt; }

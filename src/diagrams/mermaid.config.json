@@ -1,0 +1,27 @@
+{
+  "theme": "base",
+  "flowchart": { "htmlLabels": true, "curve": "basis", "padding": 12, "nodeSpacing": 28, "rankSpacing": 42 },
+  "themeVariables": {
+    "fontFamily": "\"Public Sans\", system-ui, -apple-system, sans-serif",
+    "fontSize": "15.9px",
+    "primaryColor": "#030303",
+    "primaryTextColor": "#010101",
+    "primaryBorderColor": "#040404",
+    "secondaryColor": "#030303",
+    "secondaryTextColor": "#010101",
+    "secondaryBorderColor": "#040404",
+    "tertiaryColor": "#050505",
+    "tertiaryTextColor": "#010101",
+    "tertiaryBorderColor": "#060606",
+    "lineColor": "#020202",
+    "textColor": "#010101",
+    "clusterBkg": "#050505",
+    "clusterBorder": "#060606",
+    "titleColor": "#010101",
+    "edgeLabelBackground": "#070707",
+    "nodeBorder": "#040404",
+    "mainBkg": "#030303",
+    "nodeTextColor": "#010101",
+    "background": "#070707"
+  }
+}

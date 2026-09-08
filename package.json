@@ -1,6 +1,7 @@
 {
   "scripts": {
     "build": "node src/bin/build.js",
+    "diagrams": "node src/bin/render-diagrams.js",
     "webmentions": "node src/bin/fetch-webmentions.js"
   },
   "dependencies": {
