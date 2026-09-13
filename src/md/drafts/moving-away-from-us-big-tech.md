@@ -1,9 +1,9 @@
 ---
 title: "Moving away from US Big Tech"
-date: 2026-09-07
+date: 2026-09-13
 ---
 
-Sep. 7, 2026
+Sep. 13, 2026
 
 # Moving away from US Big Tech
 
@@ -11,7 +11,7 @@ In summer 2025, when we started building [fluado](https://fluado.com), one of ou
 
 Now one year later, we realised that we had deepened our dependency on US providers: Cloudflare, GCP, Supabase, GitHub, LetsEncrypt, Slack, Google Workspace, Anthropic, etc. 
 
-One week ago we set out to move away from US tech. I have not yet addressed them all. But I'll tell you which dependencies we have moved away from, and what alternatives I have chosen and more importantly why I chose them.
+At the end of August we set out to move away from US tech. I have not yet addressed all dependencies. But I'll tell you which we have moved away from, and what alternatives I have chosen and more importantly why I chose them.
 
 ## Hardware
 
@@ -141,10 +141,10 @@ So far we were paying Google to update the machines and infra under our feet and
 
 For this I introduced a few tools: 
  - [Unattended-upgrades](https://wiki.debian.org/UnattendedUpgrades), so OS security patches install themselves.
- - [Renovate](https://docs.renovatebot.com), to bump our infrastructure images and to fix vulnerable dependencies in our apps. It merges minor and security patches itself.
+ - [Renovate](https://docs.renovatebot.com), to bump our infrastructure images and to fix vulnerable dependencies in our apps. It merges security patches itself.
  - [Trivy](https://trivy.dev), to monitor the images we run for known vulnerabilities.
 
-Major versions or kernel patches currently require a human review, and potentially a restart. I hope to automate this further with a combination of Forgejo Actions, faru agents, and replicas to avoid downtime.
+Patches that require a reboot get staged on weekday nights. If the reboot is successful it gets applied to the production environment. I hope to automate this further with a combination of Forgejo Actions, faru agents, and replicas to avoid downtime.
 
 Another aspect of GCP was IAP: we always knew who had SSH'd into our machines and when. This audit trail is something I want to bring back with managed SSH keys, but I have not got around to it yet. For now key-only SSH and [fail2ban](https://github.com/fail2ban/fail2ban) will do.
 
@@ -175,17 +175,15 @@ There are still a few infrastructural and operational aspects we need to migrate
  - Google Workspace: Gmail, Google Meet, Google Drive,… this is the heaviest given we rely on the transcript functionality from Google Meet and have our own fluado Agents integrate with Google Workspace APIs. 
  - Coding agents, right now we do most of our heavy lifting with Claude Code, at times we have used other tools and LLM combinations such as Antigravity, OpenCode, Gemini, GLM, Kimicode, etc. The easiest approach is probably an LLM Router with guaranteed EU sovereignty. I am aware of a few providers such as Requesty, EURouter, CortecsAI, etc. but I have not decided yet.
 
-I will update this blog post as I make decisions about them.
-
 ## What We Are Not Moving
 
 Some of our customers agents are utilising Gemini models under the hood, we are not planning to move any of these to different providers. Partly due to technical reasons, partly due to contractual obligations.
 
 ## Doing This In A Week
 
-This is what surprised me the most. The moment I realised moving from GitHub to Forgejo took me a day, I wondered how fast I can move the rest. I never expected to do this in a week.
+This is what surprised me the most. The moment I realised moving from GitHub to Forgejo took me a day, I wondered how fast I can move the rest. I never expected to do the bulk of this work in a week.
 
-Two reasons I could go that fast: I've seen these setups built multiple times in previous companies by extremely capable engineers, and I have also been part of some migrations myself. So I knew more or less what I wanted, or at least the shape of what I wanted.
+Two reasons why I could go this fast: I've seen these setups built multiple times in previous companies by extremely capable engineers, and I have also been part of some migrations myself. So I knew more or less what I wanted, or at least the shape of what I wanted.
 
 Projects like these used to stretch months and occupy 2 or 3 people. Doing it with AI was an absolute game changer, and I am somewhat glad I postponed this "tech debt" for a year, because the latest models are getting work like this done extremely fast.
 
