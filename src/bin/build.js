@@ -113,10 +113,13 @@ function renderPage({ title, description, htmlClass, current, section, main, met
 // accessible name; the title becomes the caption. The expand button opens the
 // same drawing in a full-viewport dialog; without JS the button is hidden and
 // a wide drawing scrolls inside its figure.
+// Markdown may point at the folder with a site-absolute or a file-relative
+// path; the latter lets GitHub's preview of a draft show the drawing too.
 const diagramsFolder = './assets/diagrams';
+const diagramPattern = /(?:^|\/)assets\/diagrams\/([^/]+\.svg)$/;
 let diagramCount = 0;
 function renderDiagram(href, title, alt) {
-  const file = `${diagramsFolder}/${href.slice('/assets/diagrams/'.length)}`;
+  const file = `${diagramsFolder}/${href.match(diagramPattern)[1]}`;
   const id = `diagram-${++diagramCount}`;
   const source = readFileSync(file, 'utf8');
   // Natural width, so the dialog can show the drawing at the size it was
@@ -144,7 +147,7 @@ const marked = new Marked().use(
 ).use({
   renderer: {
     image(href, title, text) {
-      return href.startsWith('/assets/diagrams/') ? renderDiagram(href, title, text) : false;
+      return diagramPattern.test(href) ? renderDiagram(href, title, text) : false;
     },
     // A figure is not phrasing content; a paragraph holding only one drops
     // the wrapper.

@@ -66,6 +66,8 @@ for (const file of fs.readdirSync(src).filter((f) => f.endsWith('.mmd'))) {
     .replace(/\sstyle="max-width:[^"]*"/, '')
     .replace(/viewBox="([-\d.]+) ([-\d.]+) ([-\d.]+) ([-\d.]+)"/, (m, x, y, w, h) =>
       `viewBox="${x} ${y} ${w} ${Math.ceil(parseFloat(h) / grid) * grid}"`)
+    // Mermaid sets its own role; a second role attribute is invalid XML.
+    .replace(/\srole="[^"]*"/, '')
     .replace(/<svg /, '<svg role="img" ');
   fs.writeFileSync(path.join(out, `${name}.svg`), svg);
   console.log(`${name}: ${svg.match(/viewBox="[^"]*"/)[0]}, ${Math.round(svg.length / 1024)} KB`);
