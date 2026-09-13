@@ -1,6 +1,7 @@
 ---
 title: "Leaving US Big Tech in a week"
 date: 2026-09-13
+summary: "What we replaced Google Cloud with, and why."
 ---
 
 Sep. 13, 2026
@@ -219,3 +220,7 @@ And the usual suspects I decided to implement differently, for this stage and sc
 | Secrets | Vault | gopass + age |
 | Logs | Loki, SigNoz, Grafana | VictoriaLogs |
 | Uptime | Uptime Kuma | Gatus |
+
+I hope this inspires more people to move away from US Big Tech. Wheter you run on GCP, AWS, or Azure, most of what we need has a European or self-hosted alternative.
+
+If you have done something similar, or are planning to, tell me on Mastodon. Replies to the post's toot show up as comments below :)
