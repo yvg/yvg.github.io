@@ -1,11 +1,11 @@
 ---
-title: "Moving away from US Big Tech"
+title: "Leaving US Big Tech in a week"
 date: 2026-09-13
 ---
 
 Sep. 13, 2026
 
-# Moving away from US Big Tech
+# Leaving US Big Tech in a week
 
 In summer 2025, when we started building [fluado](https://fluado.com), one of our aspirations was to run outside US Big Tech. While we agreed on it, in the big scheme of registering and building a company, it felt "not so important". So we relegated that concern to "another time" and started building our infrastructure inside the Google Cloud Platform because we were familiar with it. It felt icky, but it was one less thing to think about.
 
