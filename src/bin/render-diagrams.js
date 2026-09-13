@@ -28,17 +28,20 @@ const config = JSON.parse(fs.readFileSync(path.join(src, 'mermaid.config.json'),
 const measuredSize = config.themeVariables.fontSize;
 const pageSize = '15px';
 
+// Each token carries the light-theme value from styles.css as a fallback, so
+// the file also reads on its own (GitHub, a file viewer), where the page's
+// variables do not exist and an unresolved fill would paint black.
 const tokens = {
-  '#010101': 'var(--text)',
-  '#020202': 'var(--muted)',
-  '#030303': 'var(--mark)',
-  '#040404': 'var(--rule)',
+  '#010101': 'var(--text, #15171a)',
+  '#020202': 'var(--muted, #6b6455)',
+  '#030303': 'var(--mark, #fae9f5)',
+  '#040404': 'var(--rule, #e6ddc4)',
   '#050505': 'transparent',
-  '#060606': 'var(--rule)',
-  '#070707': 'var(--bg)',
+  '#060606': 'var(--rule, #e6ddc4)',
+  '#070707': 'var(--bg, #faf6e9)',
   // mermaid's own leftovers: arrowhead fill and shadow colour
-  '#f8f8f8': 'var(--muted)',
-  '#000000': 'var(--text)'
+  '#f8f8f8': 'var(--muted, #6b6455)',
+  '#000000': 'var(--text, #15171a)'
 };
 
 const grid = 28;
