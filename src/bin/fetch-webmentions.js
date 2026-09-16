@@ -55,10 +55,16 @@ function profileOf(entry) {
   }
 }
 
-// webmention.io pads a missing author name with the page URL.
+// webmention.io pads a missing author name with the page URL. Mastodon leaves
+// custom emoji in display names as :shortcodes:, which only render on the
+// instance that owns the image; here they are just noise.
 function nameOf(entry) {
   const raw = (entry.author && entry.author.name) || '';
-  return raw.replace(/\s*https?:\/\/\S+/g, '').trim() || 'Someone';
+  return raw
+    .replace(/\s*https?:\/\/\S+/g, '')
+    .replace(/:[a-z0-9_]+:/gi, '')
+    .replace(/\s+/g, ' ')
+    .trim() || 'Someone';
 }
 
 function isBlocked(entry) {
