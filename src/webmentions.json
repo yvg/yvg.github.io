@@ -150,6 +150,33 @@
         "url": "https://c.im/@thisislieven/117280418499846477",
         "published": "2026-09-16",
         "text": "@yvg @arbovm @fluado Good luck, it's a big change but one for the good. \nIt took me about a year to achieve 95%, and not without some frustration. The good news is that that frustration was temporary and the frustration with US tech is daily. Go Europe!"
+      },
+      {
+        "id": 2032774,
+        "name": "Yves Van Goethem :firefox:",
+        "profile": "https://indieweb.social/@yvg",
+        "avatar": "/assets/avatars/2c22b564d0d93249.jpg",
+        "url": "https://indieweb.social/@yvg/117280976972283749",
+        "published": "2026-09-16",
+        "text": "@logging24 Correct, I forgot to mention it, will edit thanks :)"
+      },
+      {
+        "id": 2032775,
+        "name": "Rasmus Sindum",
+        "profile": "https://mstdn.dk/@sindum",
+        "avatar": "/assets/avatars/5431afae4db04384.jpg",
+        "url": "https://mstdn.dk/@sindum/117281099960887126",
+        "published": "2026-09-16",
+        "text": "Great article - I thanks.\n\n@yvg @arbovm @fluado"
+      },
+      {
+        "id": 2032781,
+        "name": "Gabriel Markley",
+        "profile": "https://techhub.social/@gabrielmarkley",
+        "avatar": "/assets/avatars/dc89bef9183faa45.jpg",
+        "url": "https://techhub.social/@gabrielmarkley/117280944545724947",
+        "published": "2026-09-16",
+        "text": "@yvg @arbovm @fluado Thank you for sharing great write up. I will have to research a couple of these to add to my setup. I love the git-ops approach. I ended up their but only after struggling with the standard push that has become so standard in today's cloud setups. Could you share the costs did you save money?"
       }
     ],
     "applause": [
@@ -402,6 +429,26 @@
         "name": "Magnus Idode",
         "profile": "https://defcon.social/@MagnusIdode",
         "avatar": "/assets/avatars/8982ead2391388e2.jpg"
+      },
+      {
+        "name": "Einar.",
+        "profile": "https://social.spejset.org/@ejnro",
+        "avatar": "/assets/avatars/de5832a73a1a82e4.jpg"
+      },
+      {
+        "name": "PonderStibbons",
+        "profile": "https://mas.to/@PonderStibbons",
+        "avatar": "/assets/avatars/5414e581bf467d72.jpg"
+      },
+      {
+        "name": "Bolo Lacertus",
+        "profile": "https://mstdn.mx/@bololacertus",
+        "avatar": "/assets/avatars/2f43ae0aeb90a8f8.jpg"
+      },
+      {
+        "name": "Rasmus Sindum",
+        "profile": "https://mstdn.dk/@sindum",
+        "avatar": "/assets/avatars/5431afae4db04384.jpg"
       }
     ]
   },
