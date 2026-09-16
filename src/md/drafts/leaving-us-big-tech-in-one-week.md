@@ -229,7 +229,7 @@ And the usual suspects I decided to implement differently, for this stage and sc
 | Logs | Loki, SigNoz, Grafana | VictoriaLogs |
 | Uptime | Uptime Kuma | Gatus |
 
-I hope this inspires more people to move away from US Big Tech. Wheter you run on GCP, AWS, or Azure, most of what we need has a European or self-hosted alternative.
+I hope this inspires more people to move away from US Big Tech. Whether you run on GCP, AWS, or Azure, most of what we need has a European or self-hosted alternative.
 
 If you have done something similar, or are planning to, tell me on Mastodon :)
 
