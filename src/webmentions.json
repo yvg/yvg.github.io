@@ -113,6 +113,256 @@
       }
     ]
   },
+  "/blog/leaving-us-big-tech-in-one-week.html": {
+    "replies": [
+      {
+        "id": 2032638,
+        "name": "logging24",
+        "profile": "https://mstdn.business/@logging24",
+        "avatar": "/assets/avatars/676b8868002d7aa8.jpg",
+        "url": "https://mstdn.business/@logging24/117280473121038419",
+        "published": "2026-09-16",
+        "text": "VictoriaLogs is still a US company, though (cf. very bottom of https://victoriametrics.com/legal/esa/ )."
+      }
+    ],
+    "applause": [
+      {
+        "name": "Wojciech Pisarski",
+        "profile": "https://fosstodon.org/@wpisarski",
+        "avatar": "/assets/avatars/07761a644fd13691.jpg"
+      },
+      {
+        "name": "KurtK.",
+        "profile": "https://nrw.social/@KurtKettlerJunior",
+        "avatar": "/assets/avatars/3816733e7d8649a0.jpg"
+      },
+      {
+        "name": "DocYeet :verified:",
+        "profile": "https://mastodon.halis.io/@docyeet",
+        "avatar": "/assets/avatars/93ece574c4fc14e7.jpg"
+      },
+      {
+        "name": "Happy Shiro",
+        "profile": "https://techhub.social/@ShiroTechGuy",
+        "avatar": "/assets/avatars/3b3f60b127af507a.jpg"
+      },
+      {
+        "name": "Biscuit",
+        "profile": "https://urusai.social/@biscuit",
+        "avatar": "/assets/avatars/d0b4e42755900fb5.jpg"
+      },
+      {
+        "name": "Florian 'floe' Echtler",
+        "profile": "https://hci.social/@floe",
+        "avatar": "/assets/avatars/79611b9e83321cf2.jpg"
+      },
+      {
+        "name": "Phil",
+        "profile": "https://bolha.us/@philipsampaio",
+        "avatar": "/assets/avatars/5ab4a331b500aa73.jpg"
+      },
+      {
+        "name": "Taran Rampersad",
+        "profile": "https://mastodon.social/@knowprose",
+        "avatar": "/assets/avatars/35b97a24775ce452.jpg"
+      },
+      {
+        "name": "Flip_Switch 🇳🇱🇵🇸",
+        "profile": "https://mstdn.social/@Flip_Switch",
+        "avatar": "/assets/avatars/17f80739a9e0cf27.jpg"
+      },
+      {
+        "name": "Christo. London, England.",
+        "profile": "https://mastodon.me.uk/@Christo_459",
+        "avatar": "/assets/avatars/bb904bb122e55458.jpg"
+      },
+      {
+        "name": "EU tech news",
+        "profile": "https://mastodon.social/@eutechnews",
+        "avatar": "/assets/avatars/951cc9b9ec402a91.jpg"
+      },
+      {
+        "name": "Daniel Ratliff",
+        "profile": "https://techhub.social/@potentengineer",
+        "avatar": "/assets/avatars/cddd3b3918802678.jpg"
+      },
+      {
+        "name": "Khleedril",
+        "profile": "https://cyberplace.social/@khleedril",
+        "avatar": "/assets/avatars/a1a199f8ca1d80ed.jpg"
+      },
+      {
+        "name": "dnipro",
+        "profile": "https://twiukraine.com/@dnipro",
+        "avatar": "/assets/avatars/45795e909f5c623d.jpg"
+      },
+      {
+        "name": "7sleepersmusic",
+        "profile": "https://mastodon.social/@7sleepersmusic",
+        "avatar": "/assets/avatars/0855b3c69433a2f3.jpg"
+      },
+      {
+        "name": "NegativePrimes",
+        "profile": "https://urusai.social/@negativeprimes",
+        "avatar": "/assets/avatars/245e718d8cc911f6.jpg"
+      },
+      {
+        "name": "Tara L. Campbell",
+        "profile": "https://indieweb.social/@tarabara",
+        "avatar": "/assets/avatars/7d5341dca3634f44.jpg"
+      },
+      {
+        "name": "Martin",
+        "profile": "https://social.cologne/@MartinH",
+        "avatar": "/assets/avatars/95bfc24aaf4c94d5.jpg"
+      },
+      {
+        "name": "logging24",
+        "profile": "https://mstdn.business/@logging24",
+        "avatar": "/assets/avatars/676b8868002d7aa8.jpg"
+      },
+      {
+        "name": "Johan Nyström-Persson",
+        "profile": "https://genomic.social/@jtnystrom",
+        "avatar": "/assets/avatars/a9a780732e467104.jpg"
+      },
+      {
+        "name": "hypebot",
+        "profile": "https://social.k2pk.com/@hypebot",
+        "avatar": "/assets/avatars/45e4bf842ae490bd.jpg"
+      },
+      {
+        "name": "grayrattus",
+        "profile": "https://mastodon.social/@grayrattus",
+        "avatar": "/assets/avatars/1176da36d00d8be8.jpg"
+      },
+      {
+        "name": "Hendrik Weimer",
+        "profile": "https://fediscience.org/@hweimer",
+        "avatar": "/assets/avatars/d8753bd080eef84d.jpg"
+      },
+      {
+        "name": "trending_bot",
+        "profile": "https://tomkahe.com/@trending_bot",
+        "avatar": "/assets/avatars/d868d6addccd22fa.jpg"
+      },
+      {
+        "name": "Edge",
+        "profile": "https://m.ai6yr.org/@czarbucks",
+        "avatar": "/assets/avatars/3718c2900eae8823.jpg"
+      },
+      {
+        "name": "Ashwin Dixit",
+        "profile": "https://defcon.social/@ashwin",
+        "avatar": "/assets/avatars/05d579b63ce66fe0.jpg"
+      },
+      {
+        "name": "Leszek",
+        "profile": "https://genomic.social/@lpryszcz",
+        "avatar": "/assets/avatars/8ad8b88056fd5fd5.jpg"
+      },
+      {
+        "name": "Duke",
+        "profile": "https://mastodon.social/@DukeDuke",
+        "avatar": "/assets/avatars/3efa5bd2ab15f4f0.jpg"
+      },
+      {
+        "name": "Doune :verified:",
+        "profile": "https://mamot.fr/@Doune",
+        "avatar": "/assets/avatars/6118ea769bad9392.jpg"
+      },
+      {
+        "name": "Joachim",
+        "profile": "https://boitam.eu/@joachim",
+        "avatar": "/assets/avatars/fed58bc20819adc4.jpg"
+      },
+      {
+        "name": "crabbypup",
+        "profile": "https://cosocial.ca/@crabbypup",
+        "avatar": "/assets/avatars/38de766068bdb42f.jpg"
+      },
+      {
+        "name": "hype",
+        "profile": "https://2137.social/@hype",
+        "avatar": "/assets/avatars/f893b17aac643a02.jpg"
+      },
+      {
+        "name": "naught101",
+        "profile": "https://mastodon.social/@naught101",
+        "avatar": "/assets/avatars/4e2e514e4b1bb350.jpg"
+      },
+      {
+        "name": "HypeBot 🔥",
+        "profile": "https://social.ketupat.me/@hype",
+        "avatar": "/assets/avatars/a5fcefe0012ff84d.jpg"
+      },
+      {
+        "name": "Dr_phred",
+        "profile": "https://universeodon.com/@Dr_phred",
+        "avatar": "/assets/avatars/642262070727dfb3.jpg"
+      },
+      {
+        "name": "toots",
+        "profile": "https://fairy.id/@toots",
+        "avatar": "/assets/avatars/37958af3fbe83ba7.jpg"
+      },
+      {
+        "name": "Love",
+        "profile": "https://thistlenfern.org/@love",
+        "avatar": "/assets/avatars/f64360d72e88c1ac.jpg"
+      },
+      {
+        "name": "zippy",
+        "profile": "https://mas.to/@zippy",
+        "avatar": "/assets/avatars/2eef96d22301469a.jpg"
+      },
+      {
+        "name": "Lord Caramac the Clueless, KSC",
+        "profile": "https://discordian.social/@LordCaramac",
+        "avatar": "/assets/avatars/2d60cda28b0a8261.jpg"
+      },
+      {
+        "name": "Kitten.Koder",
+        "profile": "https://mastodon.social/@KittenKoder",
+        "avatar": "/assets/avatars/daa02706b769abce.jpg"
+      },
+      {
+        "name": "Dam H.",
+        "profile": "https://mamot.fr/@Dam_ned",
+        "avatar": "/assets/avatars/05454759f708264d.jpg"
+      },
+      {
+        "name": "CyberB",
+        "profile": "https://infosec.exchange/@CyberB",
+        "avatar": "/assets/avatars/82c1eafcd29f6d5f.jpg"
+      },
+      {
+        "name": "Crampi",
+        "profile": "https://eldritch.cafe/@crampi",
+        "avatar": "/assets/avatars/61eb5c797384bc33.jpg"
+      },
+      {
+        "name": "SueDiOh",
+        "profile": "https://mastodon.social/@SueDiOh",
+        "avatar": "/assets/avatars/2e3b0d64e19d8a47.jpg"
+      },
+      {
+        "name": "Lex",
+        "profile": "https://mastodon.social/@relasolmi",
+        "avatar": "/assets/avatars/4e61b9bf15548a7e.jpg"
+      },
+      {
+        "name": "Gabriel Markley",
+        "profile": "https://techhub.social/@gabrielmarkley",
+        "avatar": "/assets/avatars/dc89bef9183faa45.jpg"
+      },
+      {
+        "name": "clear",
+        "profile": "https://voxdiva.poorabstraction.dev/@clear",
+        "avatar": "/assets/avatars/a94df5979069d85e.jpg"
+      }
+    ]
+  },
   "/blog/stop-human-approval-in-pull-requests-for-better-collaboration.html": {
     "replies": [
       {

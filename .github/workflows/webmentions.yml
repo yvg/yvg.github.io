@@ -30,6 +30,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      # ubuntu-latest no longer ships ImageMagick. Without it the fetch dies
+      # on the first avatar it has not mirrored yet.
+      - name: Install ImageMagick for avatar resizing
+        run: sudo apt-get install -y --no-install-recommends imagemagick
+
       - name: Fetch webmentions and mirror avatars
         run: npm run webmentions
 
