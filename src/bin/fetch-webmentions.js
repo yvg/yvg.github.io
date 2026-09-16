@@ -42,9 +42,28 @@ function host(url) {
   }
 }
 
-function isBlocked(entry) {
+// A reply from someone's own blog can arrive without an author card, so
+// webmention.io hands it over with an empty author URL. That is still a
+// person; link them to the site the reply came from.
+function profileOf(entry) {
   const author = entry.author && entry.author.url;
-  return !author || blockedHosts.some((blocked) => host(author) === blocked);
+  if (author) return author;
+  try {
+    return new URL(entry.url).origin;
+  } catch (e) {
+    return '';
+  }
+}
+
+// webmention.io pads a missing author name with the page URL.
+function nameOf(entry) {
+  const raw = (entry.author && entry.author.name) || '';
+  return raw.replace(/\s*https?:\/\/\S+/g, '').trim() || 'Someone';
+}
+
+function isBlocked(entry) {
+  const profile = profileOf(entry);
+  return !profile || blockedHosts.some((blocked) => host(profile) === blocked);
 }
 
 async function fetchTarget(path) {
@@ -105,11 +124,12 @@ async function mirrorAvatar(photo, profile) {
 }
 
 async function toReply(entry) {
+  const profile = profileOf(entry);
   return {
     id: entry['wm-id'],
-    name: entry.author.name || 'Someone',
-    profile: entry.author.url,
-    avatar: await mirrorAvatar(entry.author.photo, entry.author.url),
+    name: nameOf(entry),
+    profile,
+    avatar: await mirrorAvatar(entry.author && entry.author.photo, profile),
     url: entry.url,
     published: (entry.published || entry['wm-received'] || '').slice(0, 10),
     // text, never html. That field is arbitrary markup from strangers.
@@ -118,10 +138,11 @@ async function toReply(entry) {
 }
 
 async function toApplause(entry) {
+  const profile = profileOf(entry);
   return {
-    name: entry.author.name || 'Someone',
-    profile: entry.author.url,
-    avatar: await mirrorAvatar(entry.author.photo, entry.author.url)
+    name: nameOf(entry),
+    profile,
+    avatar: await mirrorAvatar(entry.author && entry.author.photo, profile)
   };
 }
 
@@ -148,8 +169,9 @@ async function collect() {
       .sort((a, b) => a['wm-id'] - b['wm-id']);
 
     for (const entry of applauded) {
-      if (seen.has(entry.author.url)) continue;
-      seen.add(entry.author.url);
+      const profile = profileOf(entry);
+      if (seen.has(profile)) continue;
+      seen.add(profile);
       applause.push(await toApplause(entry));
     }
 

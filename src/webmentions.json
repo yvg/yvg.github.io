@@ -123,6 +123,15 @@
         "url": "https://mstdn.business/@logging24/117280473121038419",
         "published": "2026-09-16",
         "text": "VictoriaLogs is still a US company, though (cf. very bottom of https://victoriametrics.com/legal/esa/ )."
+      },
+      {
+        "id": 2032713,
+        "name": "Dale Mellorʼs Blog",
+        "profile": "https://khleedril.org",
+        "avatar": null,
+        "url": "https://khleedril.org/blog/comment/mdzcsy.html",
+        "published": "2026-09-16",
+        "text": "Great post, and congratulations on the move!\n\nI made the move a year ago, choosing Infomaniak, a Swiss-based host using the OpenStack infrastructure. It works really well for me.\n\nIt is unfortunate that we all must become more mobile over infrastructure these days, as all successful things inevitably become politicised, monetised, and enshittified. I moved to an immutable operating system (Guix) which I build at home and deploy remotely, and hopefully if the need arises next time it will be easy for me to switch provider of either infrastructure or any of the applications I use. It is interesting that you moved away from Ansible to some ad-hoc scripts for your configuration. I'll be interested to know how that works out down the line, and curious to know what prompted you to go this way.\n\nBest wishes, Dale"
       }
     ],
     "applause": [
@@ -360,6 +369,21 @@
         "name": "clear",
         "profile": "https://voxdiva.poorabstraction.dev/@clear",
         "avatar": "/assets/avatars/a94df5979069d85e.jpg"
+      },
+      {
+        "name": "Cozy Trends",
+        "profile": "https://mastodon.social/@cozy_trends",
+        "avatar": "/assets/avatars/85d12b659a154653.jpg"
+      },
+      {
+        "name": "Draler",
+        "profile": "https://mastodon.social/@draler",
+        "avatar": "/assets/avatars/5643c9e6e6941207.jpg"
+      },
+      {
+        "name": "Magnus Idode",
+        "profile": "https://defcon.social/@MagnusIdode",
+        "avatar": "/assets/avatars/8982ead2391388e2.jpg"
       }
     ]
   },
