@@ -1,10 +1,10 @@
 ---
 title: "Leaving US Big Tech in a week"
-date: 2026-09-13
-summary: "What we replaced Google Cloud with, and why."
+date: 2026-09-16
+summary: "What I replaced Google Cloud, GitHub and Cloudflare with, and why."
 ---
 
-Sep. 13, 2026
+Sep. 16, 2026
 
 # Leaving US Big Tech in a week
 
@@ -90,7 +90,7 @@ It comes down to four principles:
 
 Now CI builds an image, tags it, and commits a version pointer in our "versions" repository. Each box pulls on its own, and CI never touches production.
 
-![How a change reaches a box: developers and Renovate commit to Forgejo, CI builds and declares the new tag, and every box pulls, converges and health-checks itself once a minute.](../../../assets/diagrams/gitops.svg "How a change reaches a box.")
+![How a change reaches a box: developers and Renovate commit to Forgejo, CI builds and declares the new tag, and every box pulls, converges and health-checks itself once a minute.](../../assets/diagrams/gitops.svg "How a change reaches a box.")
 
 A deploy that fails its health check doesn't get served. The old version keeps serving until git changes again. If a bad version does get through, GitOps allows for a few options, in my order of preference: roll forward with a fix, revert the commit, or, as last resort, point the versions repo back at the last good tag.
 
@@ -137,7 +137,7 @@ I decided against it, and instead went for [VictoriaLogs](https://docs.victoriam
 
 As for uptime, I chose [Gatus](https://gatus.io), its config is a simple YAML file, and you might have understood my preference for GitOps by now.
 
-![What reaches a human: every box ships logs and metrics to the ops box, Gatus checks the sites, and alerts and status messages land in one chat channel.](../../../assets/diagrams/monitoring.svg "What reaches a human.")
+![What reaches a human: every box ships logs and metrics to the ops box, Gatus checks the sites, and alerts and status messages land in one chat channel.](../../assets/diagrams/monitoring.svg "What reaches a human.")
 
 ## Operations
 
