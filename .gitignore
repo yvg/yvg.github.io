@@ -2,4 +2,3 @@
 node_modules
 assets/avatars/.incoming
 src/md/drafts/*
-!src/md/drafts/leaving-us-big-tech-in-one-week.md
