@@ -13,8 +13,8 @@ flowchart TB
     agents --> logs
     agents --> metrics
 
-    subgraph automation["CI, Trivy, reconciler"]
-        jobs["<b>status messages</b><br/>what was just deployed<br/>which images have known vulnerabilities<br/>which box needs a reboot"]
+    subgraph automation["CI, reconciler"]
+        jobs["<b>status messages</b><br/>what was just deployed<br/>which box needs a reboot"]
     end
 
     chat["<b>Mattermost</b><br/>#monitoring"]

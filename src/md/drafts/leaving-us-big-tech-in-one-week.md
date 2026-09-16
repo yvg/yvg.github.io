@@ -134,7 +134,7 @@ As for uptime, I chose [Gatus](https://gatus.io), its config is a simple YAML fi
 
 ## Operations
 
-> Managed platform updates -> Renovate + Trivy + Unattended-upgrades
+> Managed platform updates -> Renovate + Unattended-upgrades
 >
 > IAP-only SSH -> key-only + fail2ban
 
@@ -143,7 +143,6 @@ So far we were paying Google to update the machines and infra under our feet and
 For this I introduced a few tools: 
  - [Unattended-upgrades](https://wiki.debian.org/UnattendedUpgrades), so OS security patches install themselves.
  - [Renovate](https://docs.renovatebot.com), to bump our infrastructure images and to fix vulnerable dependencies in our apps. It merges security patches itself.
- - [Trivy](https://trivy.dev), to monitor the images we run for known vulnerabilities.
 
 Patches that require a reboot get staged on weekday nights. If the reboot is successful it gets applied to the production environment. I hope to automate this further with a combination of Forgejo Actions, faru agents, and replicas to avoid downtime.
 
@@ -195,20 +194,22 @@ Two philosophies decided most of this. First, GitOps: git says what should be ru
 | | Before | After |
 |---|---|---|
 | Hardware | GCP | Hetzner |
-| Runtime | GCP Cloud Run | Docker Swarm + shell scripts |
+| Source code | GitHub | Forgejo |
 | Artifact registry | GCP Artifact Registry | Forgejo |
+| Runtime | GCP Cloud Run | Docker Swarm + shell scripts |
+| Database | Supabase Cloud | self-hosted Supabase |
+| Authentication | Firebase Auth | Supabase Auth |
+| Auth emails | Firebase | Scaleway TEM |
+| Release process | push from CI | pull-based, GitOps |
 | Secrets | GCP Secret Manager | gopass + age, in git |
+| DNS | Cloudflare | Hetzner DNS |
 | Networking & TLS | GCP Cloud Load Balancer | one Caddyfile |
 | Logs | GCP Cloud Logging | VictoriaLogs |
 | Monitoring | GCP Cloud Monitoring | Gatus + Beszel |
+| Platform updates | GCP managed | Renovate + unattended-upgrades |
+| SSH access | GCP IAP | key-only SSH + fail2ban |
 | Backups | GCP Cloud Storage + snapshots | Hetzner Object Storage |
-| Authentication | Firebase Auth | Supabase Auth |
-| Auth emails | Firebase | Scaleway TEM |
-| Source code | GitHub | Forgejo |
-| Database | Supabase Cloud | self-hosted Supabase |
-| DNS | Cloudflare | Hetzner DNS |
 | Chat | Slack | self-hosted Mattermost |
-| Release process | push from CI | pull-based, GitOps |
 
 And the usual suspects I decided to implement differently, for this stage and scale at least:
 
@@ -223,4 +224,9 @@ And the usual suspects I decided to implement differently, for this stage and sc
 
 I hope this inspires more people to move away from US Big Tech. Wheter you run on GCP, AWS, or Azure, most of what we need has a European or self-hosted alternative.
 
-If you have done something similar, or are planning to, tell me on Mastodon. Replies to the post's toot show up as comments below :)
+If you have done something similar, or are planning to, tell me on Mastodon :)
+
+
+## Acknowledgements
+
+Thanks to <a href="https://linkedin.com/in/evias">Greg</a> for reviewing this article 👋.
