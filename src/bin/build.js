@@ -167,6 +167,14 @@ function retrieveFrontmatterAttributes(mdContent) {
 // /assets by that same script, never hotlinked. A post with nothing yet still
 // gets the section: otherwise the only people told they can reply are the ones
 // who already worked it out.
+// The profiles that count as the author of this site. Matched on the exact
+// profile URL, never on the display name: anyone can call themselves yvg.
+const authorProfiles = ['https://indieweb.social/@yvg'];
+
+function isAuthor(reply) {
+  return authorProfiles.includes(String(reply.profile || '').replace(/\/+$/, ''));
+}
+
 function renderResponses(path) {
   const found = webmentions[path] || { applause: [], replies: [] };
   const quiet = !found.applause.length && !found.replies.length;
@@ -198,9 +206,12 @@ function renderResponses(path) {
         ? `<img src="${reply.avatar}" alt="" width="28" height="28" loading="lazy">`
         : '';
 
+      const author = isAuthor(reply);
+      const badge = author ? ' <span class="author">author</span>' : '';
+
       lines.push(
-        '          <li>',
-        `            <p class="who"><a class="by" href="${escapeAttribute(reply.profile)}" rel="nofollow ugc">${avatar}<span>${escapeText(reply.name)}</span></a> <a class="when" href="${escapeAttribute(reply.url)}" rel="nofollow ugc"><time datetime="${reply.published}">${formatDate(new Date(reply.published))}</time></a></p>`,
+        author ? '          <li class="by-author">' : '          <li>',
+        `            <p class="who"><a class="by" href="${escapeAttribute(reply.profile)}"${author ? '' : ' rel="nofollow ugc"'}>${avatar}<span>${escapeText(reply.name)}</span></a>${badge} <a class="when" href="${escapeAttribute(reply.url)}" rel="nofollow ugc"><time datetime="${reply.published}">${formatDate(new Date(reply.published))}</time></a></p>`,
         `            <p>${escapeText(reply.text)}</p>`,
         '          </li>'
       );

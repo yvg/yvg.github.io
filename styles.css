@@ -618,6 +618,24 @@ main > p:first-child {
   hyphens: none;
 }
 
+/* The site's own author answering in the thread. Decided by profile URL in
+   the build, never by name. The rule takes the link colour and a small label
+   sits after the name, so it reads as a response, not as another stranger. */
+.responses .replies li.by-author { border-left-color: var(--link); }
+
+.responses .author {
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--link);
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  padding: 3px 5px;
+  flex: none;
+}
+
 .responses .who {
   display: flex;
   align-items: center;
