@@ -164,10 +164,12 @@ function retrieveFrontmatterAttributes(mdContent) {
 
 // Replies arrive from Mastodon through Bridgy and webmention.io, fetched by
 // the daily workflow into a committed JSON file. Avatars are mirrored into
-// /assets by that same script, never hotlinked.
+// /assets by that same script, never hotlinked. A post with nothing yet still
+// gets the section: otherwise the only people told they can reply are the ones
+// who already worked it out.
 function renderResponses(path) {
-  const found = webmentions[path];
-  if (!found) return '';
+  const found = webmentions[path] || { applause: [], replies: [] };
+  const quiet = !found.applause.length && !found.replies.length;
 
   const lines = ['', '      <section class="responses">'];
 
@@ -207,7 +209,9 @@ function renderResponses(path) {
   }
 
   lines.push(
-    '        <p class="info">These come from Mastodon. Mention this page in a post and your reply shows up here within a day.</p>',
+    quiet
+      ? '        <p class="info">No responses yet. Mention this page in a post on Mastodon and your reply shows up here within a day.</p>'
+      : '        <p class="info">These come from Mastodon. Mention this page in a post and your reply shows up here within a day.</p>',
     '      </section>'
   );
 
