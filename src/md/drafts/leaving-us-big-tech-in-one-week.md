@@ -236,4 +236,4 @@ If you have done something similar, or are planning to, tell me on Mastodon :)
 
 ## Acknowledgements
 
-Thanks to <a href="https://linkedin.com/in/evias">Greg</a> for reviewing this article 👋.
+Thanks to <a href="https://linkedin.com/in/evias">Greg</a> and <a href="https://mastodon.social/@ctietze">@ctietze</a> for reviewing this article 👋.
