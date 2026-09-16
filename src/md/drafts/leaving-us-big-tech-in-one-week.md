@@ -79,7 +79,14 @@ On GCP the "fastest way" to ship code was a typical push-driven approach to depl
 
 This is all well and good in a setup where the platform manages the trust boundary, however on our own boxes, pushing from CI means holding onto SSH keys or poking an endpoint to trigger a pull.
 
-Holding onto SSH keys has obvious security downsides. Given the alternative is pulling, I decided to fully embrace the [GitOps](https://web.archive.org/web/20230530181135/https://www.weave.works/technologies/gitops/) philosophy with all the goodness that comes from it: declarative configs, a single-source of truth as a git repository, no drifts, and self-healing boxes.
+Holding onto SSH keys has obvious security downsides. Given the alternative is pulling, I decided to fully embrace the [GitOps](https://opengitops.dev) philosophy. 
+
+It comes down to four principles:
+
+ 1. Git holds the desired state. What should be running is a file in a repository, not a command someone ran.
+ 2. Every change is a commit, so there is a history and a way back.
+ 3. Boxes pull. Nothing pushes into them.
+ 4. Each box compares itself against git every minute and corrects its own drift.
 
 Now CI builds an image, tags it, and commits a version pointer in our "versions" repository. Each box pulls on its own, and CI never touches production.
 
