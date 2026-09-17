@@ -684,10 +684,19 @@ main .responses h2:first-child { margin-top: 0; }
   flex: none;
 }
 
-.responses .who .initial {
+/* A capital sits on the baseline, so centring the line box leaves it low.
+   Centre the glyph box instead, with a hair of bottom padding for the
+   difference between cap height and x height. */
+.responses .who .initial,
+.responses .faces .initial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sans);
   font-size: 13px;
-  line-height: 28px;
-  text-align: center;
+  line-height: 1;
+  padding-bottom: 1px;
+  box-sizing: border-box;
   color: var(--muted);
 }
 
@@ -743,21 +752,16 @@ main .responses h2:first-child { margin-top: 0; }
 .responses .faces li { margin: 0; }
 .responses .faces a { display: block; line-height: 0; }
 
+/* The initial's typography and centring are shared with the byline circle,
+   further up. */
+.responses .faces img { display: block; }
+
 .responses .faces img,
 .responses .faces .initial {
-  display: block;
   width: 28px;
   height: 28px;
   border-radius: 50%;
   background: var(--rule);
-}
-
-.responses .faces .initial {
-  font-family: var(--sans);
-  font-size: 13px;
-  line-height: 28px;
-  text-align: center;
-  color: var(--muted);
 }
 
 .responses .faces a:hover img,
