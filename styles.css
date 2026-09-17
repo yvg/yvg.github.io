@@ -606,8 +606,36 @@ main > p:first-child {
    the site already uses: sans rather than the reading serif, and the left rule
    from blockquote. The size is fixed at every breakpoint on purpose, so the
    conversation stays conversation-sized while the article grows to 26px. */
+/* The article ends here and other people's words begin. A rule and two units
+   of air mark the seam, the way hr does: 1px line + 27px = one unit, so the
+   grid carries on underneath. */
+main .responses {
+  margin-top: 56px;
+  border-top: 1px solid var(--rule);
+  padding-top: 27px;
+}
+
+/* Not chapters of the article, so not article headings. The label voice of
+   the table header and the dateline: small, uppercase, sans, muted, one unit
+   tall. The first sits right under the rule; the second gets two units above
+   to separate the faces from the replies. */
+main .responses h2 {
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 28px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 56px;
+}
+
+main .responses h2:first-child { margin-top: 0; }
+
+/* Two units between replies, one blank line inside one, so a comment with
+   paragraphs still reads as one voice and the next commenter as a new one. */
 .responses .replies { list-style: none; margin-left: 0; }
-.responses .replies li + li { margin-top: 28px; }
+.responses .replies li + li { margin-top: 56px; }
 
 .responses .replies li {
   font-family: var(--sans);
@@ -644,13 +672,23 @@ main > p:first-child {
   line-height: 28px;
 }
 
-/* 28px keeps the byline's line box at exactly one unit. */
-.responses .who img {
+/* 28px keeps the byline's line box at exactly one unit. A reply without an
+   avatar, a blog comment say, gets the same circle with an initial in it, so
+   the byline column does not jump. */
+.responses .who img,
+.responses .who .initial {
   width: 28px;
   height: 28px;
   border-radius: 50%;
   background: var(--rule);
   flex: none;
+}
+
+.responses .who .initial {
+  font-size: 13px;
+  line-height: 28px;
+  text-align: center;
+  color: var(--muted);
 }
 
 /* The avatar sits inside the profile link, so the whole byline is one target.
@@ -665,8 +703,9 @@ main > p:first-child {
   font-weight: 600;
 }
 
-.responses .by:hover span { text-decoration: underline; text-underline-offset: 3px; }
-.responses .by:hover img { outline: 2px solid var(--link); outline-offset: 2px; }
+.responses .by:hover > span:last-child { text-decoration: underline; text-underline-offset: 3px; }
+.responses .by:hover img,
+.responses .by:hover .initial { outline: 2px solid var(--link); outline-offset: 2px; }
 
 /* Permalink to the reply on the author's own instance. Underlined on hover,
    since an undecorated link is the one thing this site never does. */
@@ -808,6 +847,9 @@ main > p:first-child {
   main blockquote,
   .responses .replies li { padding-left: 24px; }
   main hr { margin: 31px 0 32px; }
+  main .responses { margin-top: 64px; padding-top: 31px; }
+  main .responses h2 { line-height: 32px; margin-top: 64px; }
+  main .responses h2:first-child { margin-top: 0; }
   main pre { margin-top: 32px; padding: 16px; }
   main table,
   main .table-scroll { margin-top: 32px; }
@@ -873,6 +915,9 @@ main > p:first-child {
   main blockquote { margin-top: 37px; }
 
   main hr { margin: 36px 0 37px; }
+  main .responses { margin-top: 74px; padding-top: 36px; }
+  main .responses h2 { line-height: 37px; margin-top: 74px; }
+  main .responses h2:first-child { margin-top: 0; }
   main pre { margin-top: 37px; padding: 18px 16px; }
   main table,
   main .table-scroll { margin-top: 37px; }

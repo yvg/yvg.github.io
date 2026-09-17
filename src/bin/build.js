@@ -204,7 +204,7 @@ function renderResponses(path) {
       // alt is empty because the name sits right there as the link's text.
       const avatar = reply.avatar
         ? `<img src="${reply.avatar}" alt="" width="28" height="28" loading="lazy">`
-        : '';
+        : `<span class="initial" aria-hidden="true">${escapeText(reply.name.trim().charAt(0) || '?')}</span>`;
 
       const author = isAuthor(reply);
       const badge = author ? ' <span class="author">author</span>' : '';
