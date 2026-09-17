@@ -177,6 +177,15 @@
         "url": "https://techhub.social/@gabrielmarkley/117280944545724947",
         "published": "2026-09-16",
         "text": "@yvg @arbovm @fluado Thank you for sharing great write up. I will have to research a couple of these to add to my setup. I love the git-ops approach. I ended up their but only after struggling with the standard push that has become so standard in today's cloud setups. Could you share the costs did you save money?"
+      },
+      {
+        "id": 2032936,
+        "name": "alf149 (Rolf Amfelt)",
+        "profile": "https://social.data.coop/@alf149",
+        "avatar": "/assets/avatars/c8a373b8792ce433.jpg",
+        "url": "https://social.data.coop/@alf149/117282338519588850",
+        "published": "2026-09-16",
+        "text": "@yvg @arbovm @fluado \n\nYou could talk to @semaphor \nWho specialises in open source solutions. \nIf any part of the todo list needs some more attention. \n\nGreat write up, and love the git ops filosofi. 🤗"
       }
     ],
     "applause": [
@@ -449,6 +458,106 @@
         "name": "Rasmus Sindum",
         "profile": "https://mstdn.dk/@sindum",
         "avatar": "/assets/avatars/5431afae4db04384.jpg"
+      },
+      {
+        "name": "Daniele Micci 🇪🇺",
+        "profile": "https://mastodon.uno/@grimjfoot",
+        "avatar": "/assets/avatars/371daf1f415deca1.jpg"
+      },
+      {
+        "name": "Thorium",
+        "profile": "https://social.linux.pizza/@Thorium",
+        "avatar": "/assets/avatars/c8129ccbc2628011.jpg"
+      },
+      {
+        "name": "Si (he/him)",
+        "profile": "https://norden.social/@sihaha",
+        "avatar": "/assets/avatars/c441fd3ca5a8a0b6.jpg"
+      },
+      {
+        "name": "Troed Sångberg",
+        "profile": "https://masto.sangberg.se/@troed",
+        "avatar": "/assets/avatars/075ab4257b529a4f.jpg"
+      },
+      {
+        "name": "Stomata",
+        "profile": "https://procial.tchncs.de/@Stomata",
+        "avatar": "/assets/avatars/cdcadc7aa1a7dc71.jpg"
+      },
+      {
+        "name": "engedal",
+        "profile": "https://mstdn.dk/@engedal",
+        "avatar": "/assets/avatars/0abca64e436e3810.jpg"
+      },
+      {
+        "name": "David Hembrow",
+        "profile": "https://todon.eu/@hembrow",
+        "avatar": "/assets/avatars/466a3c8a535d5041.jpg"
+      },
+      {
+        "name": "Davi Ottenheimer",
+        "profile": "https://infosec.exchange/@flyingpenguin",
+        "avatar": "/assets/avatars/03cd1fce7c4d0ea1.jpg"
+      },
+      {
+        "name": "brabo",
+        "profile": "https://milliways.social/@brabo",
+        "avatar": "/assets/avatars/177911a1afdea117.jpg"
+      },
+      {
+        "name": "Maia Kahlke Lorentzen",
+        "profile": "https://helvede.net/@maiathecyberwitch",
+        "avatar": "/assets/avatars/f4491f3bca7519f8.jpg"
+      },
+      {
+        "name": "Claus Cramon Houmann",
+        "profile": "https://mastodon.social/@claushoumann",
+        "avatar": "/assets/avatars/007dd76c9669b845.jpg"
+      },
+      {
+        "name": "Lapwing",
+        "profile": "https://mastodon.social/@kierudsen",
+        "avatar": "/assets/avatars/696a4679005a3414.jpg"
+      },
+      {
+        "name": "alf149 (Rolf Amfelt)",
+        "profile": "https://social.data.coop/@alf149",
+        "avatar": "/assets/avatars/c8a373b8792ce433.jpg"
+      },
+      {
+        "name": "lizzie",
+        "profile": "https://infosec.exchange/@morattisec",
+        "avatar": "/assets/avatars/a25726cc51d2155a.jpg"
+      },
+      {
+        "name": "cchelberg",
+        "profile": "https://mastodon.social/@cchelberg",
+        "avatar": "/assets/avatars/8664307f9b69de57.jpg"
+      },
+      {
+        "name": "Kevin Bowrin ☕",
+        "profile": "https://ottawa.place/@kevinbowrin",
+        "avatar": "/assets/avatars/171352f5f4af7513.jpg"
+      },
+      {
+        "name": "Brian Honan",
+        "profile": "https://mastodon.social/@brianhonan",
+        "avatar": "/assets/avatars/01efcac7d15fb092.jpg"
+      },
+      {
+        "name": "James Bannan",
+        "profile": "https://aus.social/@jamesbannan",
+        "avatar": "/assets/avatars/0fcb85c1068d2c1f.jpg"
+      },
+      {
+        "name": "Javvad Malik",
+        "profile": "https://infosec.exchange/@Javvad",
+        "avatar": "/assets/avatars/4c94e90d87e07541.jpg"
+      },
+      {
+        "name": "Andrea",
+        "profile": "https://digitalcourage.social/@AndreaKusel",
+        "avatar": "/assets/avatars/68a5b3c0ff992bc9.jpg"
       }
     ]
   },
