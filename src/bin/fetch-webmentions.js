@@ -188,6 +188,10 @@ function accountName(account) {
   return cleanName(account.display_name || account.username || '');
 }
 
+function isBlockedAccount(account) {
+  return !account || !account.url || blockedHosts.includes(host(account.url));
+}
+
 async function fromMastodon(tootIds) {
   const api = `${mastodon.instance}/api/v1/statuses`;
   const replies = [];
@@ -198,6 +202,7 @@ async function fromMastodon(tootIds) {
     for (const status of context.descendants || []) {
       // Direct replies only. An answer to an answer is that person's thread.
       if (status.in_reply_to_id !== id) continue;
+      if (isBlockedAccount(status.account)) continue;
       const text = tootText(status.content || '');
       if (!text) continue;
       replies.push({
@@ -216,6 +221,7 @@ async function fromMastodon(tootIds) {
       ...(await getAllPages(`${api}/${id}/reblogged_by?limit=80`))
     ];
     for (const account of fans) {
+      if (isBlockedAccount(account)) continue;
       applause.push({
         name: accountName(account),
         profile: account.url,
