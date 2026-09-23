@@ -179,6 +179,14 @@
         "url": "https://social.data.coop/@alf149/117282338519588850",
         "published": "2026-09-16",
         "text": "@yvg @arbovm @fluado \n\nYou could talk to @semaphor \nWho specialises in open source solutions. \nIf any part of the todo list needs some more attention. \n\nGreat write up, and love the git ops filosofi. 🤗"
+      },
+      {
+        "name": "Leander Lindahl",
+        "profile": "https://mastodon.social/@leanderlindahl",
+        "avatar": "/assets/avatars/ff50deb7e423fd6e.jpg",
+        "url": "https://mastodon.social/@leanderlindahl/117321089816860528",
+        "published": "2026-09-23",
+        "text": "@yvg @arbovm @fluado 🙌 🎉 🇪🇺 ✌️"
       }
     ],
     "applause": [
@@ -393,6 +401,11 @@
         "avatar": "/assets/avatars/e12606692f7002c4.jpg"
       },
       {
+        "name": "Chris Jakobsen",
+        "profile": "https://mastodon.green/@Chris",
+        "avatar": "/assets/avatars/e5979382075a34ea.jpg"
+      },
+      {
         "name": "DocYeet",
         "profile": "https://mastodon.halis.io/@docyeet",
         "avatar": "/assets/avatars/93ece574c4fc14e7.jpg"
@@ -421,6 +434,11 @@
         "name": "7sleepersmusic",
         "profile": "https://mastodon.social/@7sleepersmusic",
         "avatar": "/assets/avatars/0855b3c69433a2f3.jpg"
+      },
+      {
+        "name": "apfeiffer42",
+        "profile": "https://mastodon.social/@apfeiffer42",
+        "avatar": "/assets/avatars/e3c2e81b722ef2f5.jpg"
       },
       {
         "name": "Arbo",
@@ -486,6 +504,11 @@
         "name": "Taran Rampersad",
         "profile": "https://mastodon.social/@knowprose",
         "avatar": "/assets/avatars/35b97a24775ce452.jpg"
+      },
+      {
+        "name": "Leander Lindahl",
+        "profile": "https://mastodon.social/@leanderlindahl",
+        "avatar": "/assets/avatars/ff50deb7e423fd6e.jpg"
       },
       {
         "name": "naught101",
