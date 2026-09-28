@@ -301,6 +301,11 @@
         "avatar": "/assets/avatars/8ad8b88056fd5fd5.jpg"
       },
       {
+        "name": "Danielle",
+        "profile": "https://greennuclear.online/@d",
+        "avatar": "/assets/avatars/5cb98a4dc35d1b8f.jpg"
+      },
+      {
         "name": "Vincent Garrigues",
         "profile": "https://hachyderm.io/@garriguv",
         "avatar": "/assets/avatars/1ce40f902dfe34ce.jpg"
@@ -399,6 +404,11 @@
         "name": "Márton Salomváry",
         "profile": "https://mastodon.berlin/@mrc",
         "avatar": "/assets/avatars/e12606692f7002c4.jpg"
+      },
+      {
+        "name": "🍂 Höstgubben",
+        "profile": "https://mastodon.gamedev.place/@jordgubben",
+        "avatar": "/assets/avatars/e980bf4a22d401c2.jpg"
       },
       {
         "name": "Chris Jakobsen",
@@ -729,6 +739,11 @@
         "name": "dnipro",
         "profile": "https://twiukraine.com/@dnipro",
         "avatar": "/assets/avatars/45795e909f5c623d.jpg"
+      },
+      {
+        "name": "Alice",
+        "profile": "https://universeodon.com/@alic",
+        "avatar": "/assets/avatars/e060f7827d8f29a4.jpg"
       },
       {
         "name": "Dr_phred",
